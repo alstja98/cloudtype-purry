@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'purry',
         'USER': 'admin',
-        'PASSWORD': get_secret("DATABASE_PASSWORD"),
+        'PASSWORD': 'probee123!',
         'HOST': 'purry-db-0.cbevwkitof5m.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }

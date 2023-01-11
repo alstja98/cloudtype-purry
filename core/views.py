@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from .models import User, Images; #db 테이블들 가져옴
 import random
-from utils.s3Manager import upload_files_to_S3
+
 
 
 def index(request):
@@ -29,7 +29,7 @@ def openbeta(request):
     user_seq = User.objects.get(name=applicant_name)
     print(user_seq)
     
-    image_path = upload_files_to_S3(applicant_imgs)
-    Images.objects.create(seq=user_seq, path=image_path)
+
+    Images.objects.create(seq=user_seq, path=applicant_imgs)
 
     return redirect('/app1')
