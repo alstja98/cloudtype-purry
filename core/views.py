@@ -7,7 +7,7 @@ from utils.s3Manager import upload_files_to_S3
 
 
 def index(request):
-	return render(request, 'core/index.html')
+	return render(request, 'index.html')
 
 
 # 신청자 정보 받으면 sql에 저장, 이미지 aws에 저장
