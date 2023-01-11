@@ -45,10 +45,12 @@
 
     <!-- 모바일 네비게이션 -->
     <section>
-      <div class="mobile-nav-button">
-        <div class="mobile-nav-button__line"></div>
-        <div class="mobile-nav-button__line"></div>
-        <div class="mobile-nav-button__line"></div>
+      <div class="nav-back">
+        <div class="mobile-nav-button">
+          <div class="mobile-nav-button__line"></div>
+          <div class="mobile-nav-button__line"></div>
+          <div class="mobile-nav-button__line"></div>
+        </div>
       </div>
 
       <nav class="mobile-menu">
@@ -75,7 +77,7 @@
       <section class="et-slide" id="tab-es6">
         <h1 style="font-size: 1.8rem; margin-bottom: 15px">신청서 작성하기</h1>
         <div class="form-container">
-          <form action="/app1/openbeta/" method="post">
+          <form action="/app1/openbeta/" method="post" enctype="multipart/form-data">
           <div class="form-input">신청자명</div>
           <input
             type="text"
@@ -101,7 +103,7 @@
             >
           </div>
           <div class="custom-file-upload">
-            <input type="file" id="file" name="myfiles[]" multiple />
+            <input type="file" id="file" name="myfiles" multiple />
           </div>
           <br /><br /><br />
           <input type="submit" id="service-form" value="신청하기" />

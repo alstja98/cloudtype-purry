@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
+from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
 from .models import User, Images; #db 테이블들 가져옴
 import random
 
@@ -15,21 +16,18 @@ def index(request):
 def openbeta(request):
     applicant_name = request.POST['name']
     applicant_email = request.POST['email']
-    applicant_imgs = request.POST['myfiles[]']
+    files = request.FILES.getlist('myfiles')
 
-    print(applicant_name)
-    print(applicant_email)
-    print(applicant_imgs) #이미지가 하나만 출력되는 문제가 있음. 이건 나중에 해결해야함.
+    for file in files:
+        # input에서 받아온 이름과 이메일을 가진 사용자가 이미 User 테이블에 있는지 확인
+        user, created = User.objects.get_or_create(name=applicant_name, email=applicant_email)
 
-    # input에서 받아온 유저의 이름과 email을 user 테이블에 저장
-    User.objects.create(name=applicant_name, email=applicant_email)
-    # input에서 받아온 유저의 이미지 이름들 images 테이블에 저장
-    # 사실 이미지 이름을 AWS 컴퓨터 내의 경로로 재구성해야하고, 이미지들도 여러개 받을 수 있게 처리해야하는데
-    # 우선 테스트로 DB에 이미지 이름만 저장하도록 함.
-    user_seq = User.objects.get(name=applicant_name)
-    print(user_seq)
-    
+        # S3에 이미지 저장하고, 저장된 이미지의 url을 가져옴
+        filename = default_storage.save(file.name, file)
+        file_url = default_storage.url(filename)
 
-    Images.objects.create(seq=user_seq, path=applicant_imgs)
+        # input에서 받아온 이미지 이름들을 images 테이블에 저장
+        Images.objects.create(seq=user, path=file_url)
+ 
 
     return redirect('/app1')
