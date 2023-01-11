@@ -4,11 +4,7 @@ from django.shortcuts import redirect
 from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
 from .models import User, Images; #db 테이블들 가져옴
-from google.colab import auth
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 import random
-import boto3
 
 
 
@@ -22,6 +18,7 @@ def openbeta(request):
     applicant_name = request.POST['name']
     applicant_email = request.POST['email']
     files = request.FILES.getlist('myfiles')
+
 
     for file in files:
         # input에서 받아온 이름과 이메일을 가진 사용자가 이미 User 테이블에 있는지 확인
