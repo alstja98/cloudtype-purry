@@ -12,13 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import pymysql
-from utils.keyManager import get_secret
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -92,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'purry',
         'USER': 'admin',
-        'PASSWORD': 'probee123!',
+        'PASSWORD': SECRET_KEY,
         'HOST': 'purry-db-0.cbevwkitof5m.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }
