@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
   </head>
 
@@ -23,7 +23,7 @@
       <div class="index-background"></div>
       <div class="index-gradient"></div>
       <div class="intro">
-        <img class="logoImg" src="core/6.png" />
+        <img class="logoImg" src="{% static 'core/6.png' %}" />
         <h1 class="logoName">PURRY with AI</h1>
         <br /><br />
         <h3 style="display: inline-block">Open Beta release!</h3>
@@ -117,7 +117,7 @@
           </h2>
         </div>
         <img
-          src="core/3.png"
+          src="{% static 'core/3.png' %}"
           style="
             width: 100%;
             margin-top: 20px;
