@@ -1,11 +1,1237 @@
-{% extends 'core/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap"
+      rel="stylesheet"
+    />
 
-{% block content %}
-	
-	<div>
-		<h3 class="info">
-			A Django project created with <a href="https://github.com/beingbiplov/django-boilerplate">django-boilerplate</a>
-		</h3>
-	</div>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap");
 
-{% endblock %}
+      body {
+        margin: 0 auto;
+        font-family: "Gowun Batang", serif;
+      }
+
+      /* nav-bar */
+      a {
+        text-decoration: none;
+      }
+
+      #ser-button {
+        font-family: "Gowun Batang", serif;
+      }
+      .et-hero-tabs,
+      .et-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        text-align: center;
+        padding: 0 2em;
+      }
+
+      .et-hero-tabs h1,
+      .et-slide h1 {
+        font-size: 4.5rem;
+        margin: 0;
+      }
+
+      .et-hero-tabs h3,
+      .et-slide h3 {
+        font-size: 2.3rem;
+        opacity: 0.8;
+      }
+
+      .et-hero-tabs-container {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        z-index: 10;
+      }
+
+      .et-hero-tabs-container--top {
+        position: fixed;
+        top: 0;
+      }
+
+      .et-hero-tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        color: #000;
+        letter-spacing: 0.1rem;
+        transition: all 0.5s ease;
+        font-size: 1.1em;
+      }
+
+      .et-hero-tab:hover {
+        color: white;
+        background: rgb(164 151 237 / 79%);
+        transition: all 0.5s ease;
+      }
+
+      .et-hero-tab-slider {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 6px;
+        background: rgb(164 151 237);
+        transition: left 0.3s ease;
+      }
+
+      .intro-service {
+        z-index: 10;
+        position: absolute;
+        top: 5%;
+      }
+
+      /* @media (min-width: 800px) {
+
+            .et-hero-tabs h1,
+            .et-slide h1 {
+                font-size: 3rem;
+            }
+
+            .et-hero-tabs h3,
+            .et-slide h3 {
+                font-size: 1rem;
+            }
+
+            .et-hero-tab {
+                font-size: 1rem;
+            }
+        } */
+
+      /* nav-bar end */
+
+      /* index */
+      .index-background {
+        width: 100%;
+        position: absolute;
+        height: 100vh;
+        background-color: #dfd6ff;
+      }
+
+      .index-gradient {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(
+          180deg,
+          white 0%,
+          white 59px,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 3em;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .intro {
+        width: 100%;
+        text-align: center;
+        font-size: 3em;
+        font-weight: 700;
+        line-height: 1.4;
+        z-index: 5;
+      }
+
+      .logoImg {
+        display: inline-block;
+      }
+
+      .logoName {
+        display: inline-block;
+      }
+
+      /* button hover */
+      button {
+        background: rgb(82 0 213 / 81%);
+        color: #fff;
+        width: 25%;
+        height: 55px;
+        border: 0;
+        font-size: 1.2em;
+        font-weight: 600;
+        border-radius: 13px;
+        transition: 0.6s;
+        overflow: hidden;
+        z-index: 5;
+      }
+
+      button:focus {
+        outline: 0;
+      }
+
+      button:before {
+        content: "";
+        display: block;
+        position: absolute;
+        background: rgba(255, 255, 255, 0.5);
+        width: 60px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0.5;
+        filter: blur(30px);
+        transform: translateX(-100px) skewX(-15deg);
+      }
+
+      button:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: rgba(255, 255, 255, 0.2);
+        width: 30px;
+        height: 100%;
+        left: 30px;
+        top: 0;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100px) skewX(-15deg);
+      }
+
+      button:hover {
+        background: rgb(164 151 237);
+        cursor: pointer;
+      }
+
+      button:hover:before {
+        transform: translateX(300px) skewX(-15deg);
+        opacity: 0.6;
+        transition: 0.7s;
+      }
+
+      button:hover:after {
+        transform: translateX(300px) skewX(-15deg);
+        opacity: 1;
+        transition: 0.7s;
+      }
+
+      /* 서비스 신청서 작성*/
+      .form-container {
+        width: 60%;
+        background-color: #f6f6f6;
+        padding: 10px;
+        border-radius: 10px;
+        border: 5px solid #f6f6f6;
+        padding-bottom: 20px;
+        margin-bottom: 70px;
+      }
+
+      #service-form {
+        width: 30%;
+        height: 40px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 20px;
+        font-family: "Gowun Batang", serif;
+        background: rgb(82 0 213 / 81%);
+        border: none;
+        color: white;
+      }
+
+      #service-form:hover {
+        background: rgb(164 151 237);
+        cursor: pointer;
+        transition: 0.7s;
+      }
+      .form-input {
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-align: left;
+      }
+
+      #form-input-span {
+        font-size: 1.1rem;
+      }
+
+      .form-input2 {
+        border: none;
+        float: left;
+        width: 97%;
+        height: calc(1.5em + 0.75rem + 2px);
+        font-size: 1rem;
+        font-weight: 400;
+        border-radius: 7px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        padding-left: 10px;
+      }
+
+      .form-input2:focus {
+        outline: 2px solid #d5d5d5;
+      }
+
+      /* 이미지 넣는 input */
+
+      .custom-file-upload-hidden {
+        display: none;
+        visibility: hidden;
+        position: absolute;
+        left: -9999px;
+      }
+
+      .file-upload-wrapper {
+        position: relative;
+        margin-bottom: 5px;
+      }
+      .file-upload-wrapper > button {
+        font-family: "Gowun Batang", serif;
+      }
+      .file-upload-input {
+        width: 40%;
+        color: #000;
+        padding: 11px 17px;
+        border: none;
+        border-radius: 7px 0px 0px 7px;
+        background-color: #fff;
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+        float: left;
+        /* IE 9 Fix */
+      }
+
+      .file-upload-input:hover,
+      .file-upload-input:focus {
+        outline: none;
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+      }
+
+      .file-upload-button {
+        width: 30%;
+        height: calc(1.5em + 0.75rem + 2px);
+        cursor: pointer;
+        display: inline-block;
+        color: #000;
+        font-size: 1em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 0px 7px 7px 0px;
+        margin-left: -1px;
+        background-color: #e1e1e1;
+        float: left;
+        /* IE 9 Fix */
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+      }
+
+      .file-upload-button:hover {
+        background-color: #dad1f9;
+      }
+
+      /* kakaotalk */
+      @import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+
+      .wrap {
+        text-align: center;
+        width: 70%;
+        height: 50vh;
+        margin: 0 auto;
+        margin-top: 100px;
+        border: 10px double rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+      }
+
+      .wrap h2 {
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 50px;
+        font-size: 3em;
+      }
+
+      .wrap h2 strong {
+        font-weight: bold;
+        color: yellow;
+      }
+
+      .face {
+        margin-left: 75px;
+        margin-top: -50px;
+        animation: face 3s ease infinite;
+        transform: translate(50%, 0%);
+        transform-origin: 50% 50%;
+      }
+
+      .right-ear,
+      .left-ear {
+        display: inline-block;
+        position: relative;
+        animation: ear 2s ease-in-out 0s infinite;
+      }
+
+      .left-eye,
+      .right-eye {
+        transition: all 0.5s;
+        animation: lefteye 1s ease-in-out 1s infinite;
+      }
+
+      .left-eyebrow,
+      .right-eyebrow {
+        animation: eybrow 2s linear infinite;
+      }
+
+      @keyframes lefteye {
+        from,
+        to {
+          r: 6.649;
+        }
+
+        to {
+          r: 5;
+        }
+      }
+
+      @keyframes face {
+        100% {
+          transform: translate(-20%, 0) rotate(-10deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes ear {
+        from,
+        to {
+          transform: scale(1);
+          transform-origin: left bottom;
+        }
+
+        50% {
+          transform: scale(0.9);
+          transform-origin: left bottom;
+        }
+      }
+
+      @keyframes eybrow {
+        100% {
+          stroke-width: 5;
+          opacity: 0.5;
+        }
+      }
+
+      .nose {
+        animation: nose 3s ease infinite;
+        transform-origin: 50% 50%;
+      }
+
+      @keyframes nose {
+        from,
+        to {
+          transform: scale(1.1);
+        }
+
+        50% {
+          transform: scale(0.8);
+        }
+      }
+
+      .q-container {
+        text-align: left;
+        width: 70%;
+      }
+
+      .question {
+        padding: 15px 15px;
+        font-size: 1.2em;
+        background-color: #ddd;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+
+      .question:hover {
+        background-color: #dad1f9;
+        transition: 1s;
+      }
+
+      .answer {
+        padding: 15px 15px;
+        font-size: 1.2em;
+        background-color: #ddd;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+
+      @media (min-width: 768px) {
+        .et-hero-tabs-container2,
+        .mobile-nav-button,
+        .mobile-menu {
+          display: none;
+        }
+      }
+
+      /* 모바일 */
+      @media (max-width: 768px) {
+        .et-hero-tabs-container {
+          display: none;
+        }
+
+        .mobile-nav-button {
+          position: fixed;
+          margin: 2rem;
+          left: 0;
+          top: 0;
+          z-index: 9999;
+          cursor: pointer;
+          width: 35px;
+          height: 30px;
+        }
+
+        .mobile-nav-button .mobile-nav-button__line {
+          width: 100%;
+          height: 4px;
+          background: #0e0e0e;
+          position: relative;
+          transition: 1s ease;
+        }
+
+        .mobile-nav-button .mobile-nav-button__line:nth-of-type(2) {
+          margin: 0.5rem 0;
+        }
+
+        .mobile-nav-button .mobile-nav-button__line--1 {
+          transform: rotate(45deg);
+          top: 13px;
+          position: absolute;
+        }
+
+        .mobile-nav-button .mobile-nav-button__line--2 {
+          display: none;
+        }
+
+        .mobile-nav-button .mobile-nav-button__line--3 {
+          transform: rotate(135deg);
+          top: 13px;
+          position: absolute;
+        }
+
+        .mobile-menu {
+          display: block;
+          max-width: 500px;
+          width: 100%;
+          right: -100%;
+          height: 100vh;
+          background: #d2c6ff;
+          opacity: 0;
+          position: fixed;
+          z-index: 9998;
+          transition: 0.6s ease;
+          top: 0;
+        }
+
+        .mobile-menu ul {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          padding: 0;
+        }
+
+        .mobile-menu ul li {
+          list-style: none;
+        }
+
+        .mobile-menu ul li a {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          color: #fff;
+          font-size: 2.5rem;
+          margin-bottom: 30px;
+          font-weight: bold;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .mobile-menu ul li a:after {
+          content: "";
+          background: #0e0e0e;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          right: -100%;
+          top: 0;
+          z-index: -1;
+          transition: 0.4s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+          color: #fff;
+        }
+
+        .mobile-menu ul li a:hover:after {
+          right: 0;
+        }
+
+        .mobile-menu--open {
+          right: 0;
+          opacity: 1;
+        }
+
+        #kakao {
+          font-size: 1.7em;
+        }
+
+        .wrap {
+          width: 100%;
+        }
+
+        .q-container {
+          width: 90%;
+        }
+        .q-container div {
+          font-size: 1em;
+        }
+
+        .form-container {
+          width: 100%;
+        }
+
+        .file-upload-input {
+          width: 50%;
+        }
+
+        .file-upload-button {
+          font-size: 1em;
+        }
+
+        .et-slide h3 {
+          font-size: 1.5rem;
+        }
+
+        .et-slide h2 {
+          font-size: 1rem;
+          padding: 0 20px;
+        }
+
+        #tab-flexbox > div {
+          top: 0%;
+        }
+
+        .et-hero-tabs h1 {
+          font-size: 2rem;
+        }
+
+        .et-hero-tabs h3 {
+          font-size: 1.4rem;
+        }
+        .intro h3 {
+          font-size: 2rem;
+        }
+        #ser-button {
+          width: 60%;
+          margin-top: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- PC 내비게이션-->
+    <section class="et-hero-tabs">
+      <div class="index-background"></div>
+      <div class="index-gradient"></div>
+      <div class="intro">
+        <img class="logoImg" src="./6.png" />
+        <h1 class="logoName">PURRY with AI</h1>
+        <br /><br />
+        <h3 style="display: inline-block">Open Beta release!</h3>
+      </div>
+      <h3 style="margin-bottom: 20px; margin-top: 0px">
+        AI를 통해 당신의 반려동물에게 귀여운 캐리커쳐를 그려주세요!
+      </h3>
+      <button type="button" id="ser-button">오픈베타 참여하기</button>
+
+      <div class="et-hero-tabs-container">
+        <a class="et-hero-tab" id="service" href="#tab-es6">서비스 신청</a>
+        <a class="et-hero-tab" href="#tab-flexbox">PURRY 소개</a>
+        <a class="et-hero-tab" href="#tab-react">자주 묻는 질문</a>
+        <a class="et-hero-tab" href="#tab-angular">굿즈 제작</a>
+        <a class="et-hero-tab" href="#tab-other">오픈채팅</a>
+        <span class="et-hero-tab-slider"></span>
+      </div>
+    </section>
+
+    <!-- 모바일 네비게이션 -->
+    <section>
+      <div class="mobile-nav-button">
+        <div class="mobile-nav-button__line"></div>
+        <div class="mobile-nav-button__line"></div>
+        <div class="mobile-nav-button__line"></div>
+      </div>
+
+      <nav class="mobile-menu">
+        <ul class="et-hero-tabs-container2">
+          <li>
+            <a class="et-hero-tab" id="service" href="#tab-es6">서비스 신청</a>
+          </li>
+          <li><a class="et-hero-tab" href="#tab-flexbox">PURRY 소개</a></li>
+          <li><a class="et-hero-tab" href="#tab-react">자주 묻는 질문</a></li>
+          <li><a class="et-hero-tab" href="#tab-angular">굿즈 제작</a></li>
+          <li><a class="et-hero-tab" href="#tab-other">오픈채팅</a></li>
+          <span class="et-hero-tab-slider"></span>
+        </ul>
+        <!-- <ul>
+                <li><a>Home</a></li>
+                <li><a>About</a></li>
+                <li><a>Blog</a></li>
+                <li><a>Contact</a></li>
+            </ul> -->
+      </nav>
+    </section>
+    <!-- Main -->
+    <main class="et-main">
+      <section class="et-slide" id="tab-es6">
+        <h1 style="font-size: 1.8rem; margin-bottom: 15px">신청서 작성하기</h1>
+        <div class="form-container">
+          <form action="/app1/openbeta/" method="post">
+          <div class="form-input">신청자명</div>
+          <input
+            type="text"
+            autocomplete="new-password"
+            class="form-input form-input2"
+            id="name"
+            name="name"
+            placeholder="본인 이름"
+          /><br />
+          <div class="form-input">이메일 주소</div>
+          <input
+            type="text"
+            autocomplete="new-password"
+            class="form-input form-input2"
+            id="photo"
+            name="email"
+            placeholder="결과물을 받을 이메일"
+          /><br /><br />
+          <div class="form-input">
+            반려동물 사진<br /><span id="form-input-span"
+              >* 동물의 얼굴을 기준으로 (정면, 위, 아래, 오른쪽, 왼쪽) 총 5장을
+              입력해주세요!</span
+            >
+          </div>
+          <div class="custom-file-upload">
+            <input type="file" id="file" name="myfiles[]" multiple />
+          </div>
+          <br /><br /><br />
+          <input type="submit" id="service-form" value="신청하기" />
+        </form>
+        </div>
+      </section>
+      <section class="et-slide" id="tab-flexbox">
+        <div class="intro-service">
+          <h3 style="margin-bottom: 10px">PURRY는 무슨 서비스일까요?</h3>
+          <h2>
+            AI를 활용해 반려동물의 귀여운 얼굴을 학습해 다양한 컨셉으로 그림을
+            그려주는 서비스입니다
+          </h2>
+        </div>
+        <img
+          src="./3.png"
+          style="
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: absolute;
+            opacity: 90%;
+            top: 9%;
+          "
+        />
+      </section>
+      <section class="et-slide" id="tab-react">
+        <h1 style="font-size: 2.5em; margin-bottom: 30px">자주 묻는 질문</h1>
+        <div class="q-container">
+          <div class="question" id="q1">Q1. 어떻게 사용하는건가요?</div>
+          <div class="answer" id="a1" style="display: none">
+            A1. 본인의 반려동물의 얼굴을 정면, 위, 아래, 오른쪽, 왼쪽에서
+            촬영하여 최소 5장 이상 원본 사진을 전송해주시면 됩니다.<br />
+            오픈 베타 기간 중에는 PURRY에서 정한 특정한 화풍으로 그림이 제작되어
+            발송될 예정입니다.
+          </div>
+          <div class="question" id="q2">Q2. 결과는 어떻게 받을 수 있나요?</div>
+          <div class="answer" id="a2" style="display: none">
+            A2. 오픈 베타 기간 중에는 결과물은 몇일 내에 이메일로 받을 수
+            있습니다.
+          </div>
+          <div class="question" id="q3">
+            Q3. 제가 원하는 화풍의 그림으로도 가능한가요?
+          </div>
+          <div class="answer" id="a3" style="display: none">
+            A3. 특별히 원하는 화풍의 그림이 있다면 강아지 원본 사진과 같이
+            보내주셔도 됩니다.<br />
+            하지만 별도의 추가 작업이 필요하므로 소정의 금액이 청구될 수
+            있습니다.
+          </div>
+        </div>
+      </section>
+      <section class="et-slide" id="tab-angular">
+        <h1>굿즈 제작</h1>
+        <h3>Comming Soon</h3>
+      </section>
+      <section
+        class="et-slide"
+        id="tab-other"
+        style="background-color: #a497ed66"
+      >
+        <?xml version="1.0" encoding="utf-8"?>
+        <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <div class="wrap">
+          <h2
+            id="kakao"
+            onclick="window.open('http://open.kakao.com/o/gcBoAOVe')"
+            target="_black"
+          >
+            카카오톡 <strong>오픈채팅</strong> 참여
+          </h2>
+          <svg
+            class="face"
+            onclick="window.open('http://open.kakao.com/o/gcBoAOVe')"
+            version="1.1"
+            id="Layer_2"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="595.28px"
+            height="841.89px"
+            viewBox="0 0 595.28 841.89"
+            enable-background="new 0 0 595.28 841.89"
+            xml:space="preserve"
+          >
+            <ellipse
+              class="right-ear"
+              fill="#F6C05C"
+              stroke="#000000"
+              stroke-width="7"
+              stroke-miterlimit="10"
+              cx="300.222"
+              cy="125.129"
+              rx="27.307"
+              ry="25.53"
+            />
+            <ellipse
+              class="left-ear"
+              fill="#F6C05C"
+              stroke="#000000"
+              stroke-width="7"
+              stroke-miterlimit="10"
+              cx="201.915"
+              cy="112.034"
+              rx="26"
+              ry="23"
+            />
+
+            <path
+              fill="#F6C05C"
+              stroke="#000000"
+              stroke-width="7"
+              stroke-miterlimit="10"
+              d="M338.08,205.034
+	c-5.165,53-62.167,88.045-114.165,83.565c-53-4.565-88-42.309-88-94.5s55.474-94.5,107.665-94.5
+	C304.915,99.6,343.143,153.089,338.08,205.034z"
+            />
+            <line
+              class="left-eyebrow"
+              fill="none"
+              stroke="#000000"
+              stroke-width="7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              x1="152.784"
+              y1="150.659"
+              x2="181.131"
+              y2="150.659"
+            >
+              <animate
+                attributeName="x1"
+                from="152.784"
+                to="181.784"
+                begin="0s"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="y1"
+                from="150.659"
+                to="148.659"
+                begin="0s"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+            </line>
+            <line
+              class="right-eyebrow"
+              fill="none"
+              stroke="#000000"
+              stroke-width="7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              x1="226.498"
+              y1="150.659"
+              x2="263.348"
+              y2="150.659"
+            >
+              <animate
+                attributeName="x2"
+                from="263.348"
+                to="226.348"
+                begin="0s"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="y2"
+                from="150.659"
+                to="149.659"
+                begin="0s"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+            </line>
+            <circle class="left-eye" cx="170.819" cy="169.5" r="6.649" />
+            <circle class="right-eye" cx="242.561" cy="169.5" r="6.649" />
+            <g>
+              <path
+                fill="#FFFFFF"
+                stroke="#000000"
+                stroke-width="7"
+                stroke-miterlimit="10"
+                d="M217.269,184.704
+		c-5.581,0-10.565,1.838-13.854,4.72c-3.29-2.881-8.274-4.72-13.855-4.72c-9.906,0-17.936,5.79-17.936,12.932
+		c0,7.143,8.03,12.932,17.936,12.932c5.581,0,10.565-1.838,13.855-4.72c3.29,2.882,8.273,4.72,13.854,4.72
+		c9.905,0,17.936-5.79,17.936-12.932C235.205,190.494,227.174,184.704,217.269,184.704z"
+              />
+
+              <path
+                class="nose"
+                d="M213.779,187.897c-0.388,5.82-4.05,10.341-8.182,10.104c-4.13-0.239-12.384-5.453-11.996-11.271
+		c0.389-5.819,9.271-10.041,13.403-9.801C211.133,177.167,214.167,182.079,213.779,187.897z"
+              />
+            </g>
+          </svg>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script>
+    class StickyNavigation {
+      constructor() {
+        this.currentId = null;
+        this.currentTab = null;
+        this.tabContainerHeight = 70;
+        let self = this;
+        $(".et-hero-tab").click(function () {
+          self.onTabClick(event, $(this));
+        });
+        $(window).scroll(() => {
+          this.onScroll();
+        });
+        $(window).resize(() => {
+          this.onResize();
+        });
+      }
+
+      onTabClick(event, element) {
+        event.preventDefault();
+        let scrollTop =
+          $(element.attr("href")).offset().top - this.tabContainerHeight + 1;
+        $("html, body").animate({ scrollTop: scrollTop }, 600);
+      }
+
+      onScroll() {
+        this.checkTabContainerPosition();
+        this.findCurrentTabSelector();
+      }
+
+      onResize() {
+        if (this.currentId) {
+          this.setSliderCss();
+        }
+      }
+
+      checkTabContainerPosition() {
+        let offset =
+          $(".et-hero-tabs").offset().top +
+          $(".et-hero-tabs").height() -
+          this.tabContainerHeight;
+        if ($(window).scrollTop() > offset) {
+          $(".et-hero-tabs-container").addClass("et-hero-tabs-container--top");
+        } else {
+          $(".et-hero-tabs-container").removeClass(
+            "et-hero-tabs-container--top"
+          );
+        }
+      }
+
+      findCurrentTabSelector(element) {
+        let newCurrentId;
+        let newCurrentTab;
+        let self = this;
+        $(".et-hero-tab").each(function () {
+          let id = $(this).attr("href");
+          let offsetTop = $(id).offset().top - self.tabContainerHeight;
+          let offsetBottom =
+            $(id).offset().top + $(id).height() - self.tabContainerHeight;
+          if (
+            $(window).scrollTop() > offsetTop &&
+            $(window).scrollTop() < offsetBottom
+          ) {
+            newCurrentId = id;
+            newCurrentTab = $(this);
+          }
+        });
+        if (this.currentId != newCurrentId || this.currentId === null) {
+          this.currentId = newCurrentId;
+          this.currentTab = newCurrentTab;
+          this.setSliderCss();
+        }
+      }
+
+      setSliderCss() {
+        let width = 0;
+        let left = 0;
+        if (this.currentTab) {
+          width = this.currentTab.css("width");
+          left = this.currentTab.offset().left;
+        }
+        $(".et-hero-tab-slider").css("width", width);
+        $(".et-hero-tab-slider").css("left", left);
+      }
+    }
+
+    new StickyNavigation();
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#ser-button").on("click", function () {
+        $("#service").click();
+      });
+
+      $(".form-input").on("click", function () {
+        $(".form-container").css("border-left", "5px solid #6667AB");
+        $(".form-container").css("transition", "0.5s");
+      });
+
+      $("html").click(function (e) {
+        if (!$(e.target).hasClass("form-input")) {
+          $(".form-container").css("border-left", "none");
+        }
+      });
+
+      $("#q1").on("click", function () {
+        $("#a1").slideToggle();
+      });
+      $("#q2").on("click", function () {
+        $("#a2").slideToggle();
+      });
+      $("#q3").on("click", function () {
+        $("#a3").slideToggle();
+      });
+
+      $(".et-hero-tab").on("click", function () {
+        $(".mobile-nav-button").click();
+      });
+    });
+  </script>
+  <script>
+    // 동물 사진 넣는 input 관련 코드
+    //Reference:
+    //https://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
+    (function ($) {
+      // Browser supports HTML5 multiple file?
+      var multipleSupport = typeof $("<input/>")[0].multiple !== "undefined",
+        isIE = /msie/i.test(navigator.userAgent);
+
+      $.fn.customFile = function () {
+        return this.each(function () {
+          var $file = $(this).addClass("custom-file-upload-hidden"), // the original file input
+            $wrap = $('<div class="file-upload-wrapper">'),
+            $input = $('<input type="text" class="file-upload-input" />'),
+            // Button that will be used in non-IE browsers
+            $button = $(
+              '<button type="button" class="file-upload-button">사진 선택</button>'
+            ),
+            // Hack for IE
+            $label = $(
+              '<label class="file-upload-button" for="' +
+                $file[0].id +
+                '">사진 선택/label>'
+            );
+
+          // Hide by shifting to the left so we
+          // can still trigger events
+          $file.css({
+            position: "absolute",
+            left: "-9999px",
+          });
+
+          $wrap
+            .insertAfter($file)
+            .append($file, $input, isIE ? $label : $button);
+
+          // Prevent focus
+          $file.attr("tabIndex", -1);
+          $button.attr("tabIndex", -1);
+
+          $button.click(function () {
+            $file.focus().click(); // Open dialog
+          });
+
+          $file.change(function () {
+            var files = [],
+              fileArr,
+              filename;
+
+            // If multiple is supported then extract
+            // all filenames from the file array
+            if (multipleSupport) {
+              fileArr = $file[0].files;
+              for (var i = 0, len = fileArr.length; i < len; i++) {
+                files.push(fileArr[i].name);
+              }
+              filename = files.join(", ");
+
+              // If not supported then just take the value
+              // and remove the path to just show the filename
+            } else {
+              filename = $file.val().split("\\").pop();
+            }
+
+            $input
+              .val(filename) // Set the value
+              .attr("title", filename) // Show filename in title tootlip
+              .focus(); // Regain focus
+          });
+
+          $input.on({
+            blur: function () {
+              $file.trigger("blur");
+            },
+            keydown: function (e) {
+              if (e.which === 13) {
+                // Enter
+                if (!isIE) {
+                  $file.trigger("click");
+                }
+              } else if (e.which === 8 || e.which === 46) {
+                // Backspace & Del
+                // On some browsers the value is read-only
+                // with this trick we remove the old input and add
+                // a clean clone with all the original events attached
+                $file.replaceWith(($file = $file.clone(true)));
+                $file.trigger("change");
+                $input.val("");
+              } else if (e.which === 9) {
+                // TAB
+                return;
+              } else {
+                // All other keys
+                return false;
+              }
+            },
+          });
+        });
+      };
+
+      // Old browser fallback
+      if (!multipleSupport) {
+        $(document).on("change", "input.customfile", function () {
+          var $this = $(this),
+            // Create a unique ID so we
+            // can attach the label to the input
+            uniqId = "customfile_" + new Date().getTime(),
+            $wrap = $this.parent(),
+            // Filter empty input
+            $inputs = $wrap
+              .siblings()
+              .find(".file-upload-input")
+              .filter(function () {
+                return !this.value;
+              }),
+            $file = $(
+              '<input type="file" id="' +
+                uniqId +
+                '" name="' +
+                $this.attr("name") +
+                '"/>'
+            );
+
+          // 1ms timeout so it runs after all other events
+          // that modify the value have triggered
+          setTimeout(function () {
+            // Add a new input
+            if ($this.val()) {
+              // Check for empty fields to prevent
+              // creating new inputs when changing files
+              if (!$inputs.length) {
+                $wrap.after($file);
+                $file.customFile();
+              }
+              // Remove and reorganize inputs
+            } else {
+              $inputs.parent().remove();
+              // Move the input so it's always last on the list
+              $wrap.appendTo($wrap.parent());
+              $wrap.find("input").focus();
+            }
+          }, 1);
+        });
+      }
+    })(jQuery);
+
+    $("input[type=file]").customFile();
+  </script>
+  <script>
+    // 모바일 전용 네비게이션
+    $(document).ready(function () {
+      //Menu button on click event
+      $(".mobile-nav-button").on("click", function () {
+        // Toggles a class on the menu button to transform the burger menu into a cross
+        $(
+          ".mobile-nav-button .mobile-nav-button__line:nth-of-type(1)"
+        ).toggleClass("mobile-nav-button__line--1");
+        $(
+          ".mobile-nav-button .mobile-nav-button__line:nth-of-type(2)"
+        ).toggleClass("mobile-nav-button__line--2");
+        $(
+          ".mobile-nav-button .mobile-nav-button__line:nth-of-type(3)"
+        ).toggleClass("mobile-nav-button__line--3");
+
+        // Toggles a class that slides the menu into view on the screen
+        $(".mobile-menu").toggleClass("mobile-menu--open");
+        return false;
+      });
+    });
+  </script>
+</html>
