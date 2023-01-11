@@ -2,8 +2,13 @@ from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
+from django.conf import settings
 from .models import User, Images; #db 테이블들 가져옴
+from google.colab import auth
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 import random
+import boto3
 
 
 

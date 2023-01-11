@@ -349,7 +349,7 @@ button:hover:after {
 .wrap {
   text-align: center;
   width: 70%;
-  height: 50vh;
+  height: 70vh;
   margin: 0 auto;
   margin-top: 100px;
   border: 10px double rgba(255, 255, 255, 0.2);
@@ -599,6 +599,7 @@ button:hover:after {
 
   .wrap {
 	width: 100%;
+  height:53vh;
   }
 
   .q-container {
