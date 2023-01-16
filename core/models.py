@@ -4,7 +4,7 @@ from django.db import models
 
 class Images(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey('User', models.DO_NOTHING, db_column='id')
+    user_id = models.ForeignKey('User', models.DO_NOTHING, db_column='user_id')
     path = models.CharField(max_length=1000)
     update_time = models.DateTimeField(auto_now=True)
 
