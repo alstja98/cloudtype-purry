@@ -30,6 +30,5 @@ def openbeta(request):
 
         # input에서 받아온 이미지 이름들을 images 테이블에 저장
         Images.objects.create(seq=user, path=file_url)
- 
 
     return redirect('/app1')
