@@ -1,0 +1,49 @@
+@media screen and (max-width: 750px) {
+    .content h2{
+        padding:0;
+    }
+
+    .form-container input {
+        font-size:0.75em;
+    }
+
+    .wrap{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrap ul{
+        padding:0;
+
+    }
+
+    .wrap h1{
+        font-size:2.6em !important;
+    }
+
+    .nav-link{
+        padding:0.6rem 0;
+    }
+    .wrap h1::before{
+        height:2rem;
+    }
+
+    .wrap h1:hover::before {
+        top: -13px;
+        left: -7px;
+        color: purple
+    }
+    .wrap h1:hover::after{
+        left:53%;
+        width:115%;
+        top:47%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .wrap h1{
+        font-size:2rem !important;
+    }
+}
+    

@@ -4,15 +4,14 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
   <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.css"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.css"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.3/paper-full.min.js"></script>
+  <!--모바일내비-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineMax.min.js"></script>
+  <!--모바일내비end-->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,8 +29,21 @@
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/snslink.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/beta-form.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/goods.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'core/css/.css' %}" />
+  <!-- 모바일 전용 css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-nav.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-home.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-tab-flexbox.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-tab-es6.css' %}" />
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/swiper.css' %}" />  -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/slick.css' %}" />  -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/slick-theme.css' %}" />  -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/font-awesome.min.css' %}" />  -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/bootstrap.css' %}" />  -->
   <!-- css 가져오기 end-->
+  <!-- js 가져오기 -->
+  <script type="text/javascript" src="{% static 'core/js/external/swiper.js' %}"></script>
+
+  <!-- js 가져오기 -->
   <style>
     .image-slide {
       height: 100%;
@@ -48,17 +60,17 @@
     <!-- PC 내비게이션-->
     <section class="et-hero-tabs">
       <div class="et-hero-tabs-container">
-        <a class="et-hero-tab" href="#tab-react">HOME</a>
-        <a class="et-hero-tab" href="#tab-flexbox">PURRY 소개</a>
+        <a class="et-hero-tab" id="home" href="#tab-react">HOME</a>
+        <a class="et-hero-tab" id="purry" href="#tab-flexbox">PURRY 소개</a>
         <a class="et-hero-tab" id="service" href="#tab-es6">서비스 신청</a>
-        <a class="et-hero-tab" href="#tab-angular">굿즈 제작</a>
-        <a class="et-hero-tab" href="#tab-other">SNS 문의</a>
+        <a class="et-hero-tab" id="goods" href="#tab-angular">굿즈 제작</a>
+        <a class="et-hero-tab" id="sns" href="#tab-other">SNS 문의</a>
         <span class="et-hero-tab-slider"></span>
       </div>
     </section>
     <!-- PC 네비게이션 END-->
     <!-- 모바일 네비게이션 -->
-    <section class="mobile-section">
+    <!-- <section class="mobile-section">
       <div class="nav-back">
         <div class="mobile-nav-button">
           <div class="mobile-nav-button__line"></div>
@@ -77,10 +89,76 @@
           <span class="et-hero-tab-slider"></span>
         </ul>
       </nav>
-    </section>
+    </section> -->
+    <!-- BASEN ON DRIBBBLE SHOT: https://dribbble.com/shots/2209627-UI8-Nav -->
+<!-- 
+    <section class="mobile-section">
+      <span class="menu-trigger">
+        <i class="menu-trigger-bar top"></i>
+        <i class="menu-trigger-bar middle"></i>
+        <i class="menu-trigger-bar bottom"></i>
+      </span>
+      <span class="close-trigger">
+        <i class="close-trigger-bar left"></i>
+        <i class="close-trigger-bar right"></i>
+      </span>
+      <div class="inner-container">
+        <i class="menu-bg top"></i>
+        <i class="menu-bg middle"></i>
+        <i class="menu-bg bottom"></i>
+        <div class="menu-container">
+          <ul class="menu">
+            <li>
+              <a href="#tab-react">HOME</a>
+            </li>
+            <li>
+              <a href="#tab-flexbox">PURRY 소개</a>
+            </li>
+            <li>
+              <a href="#tab-es6">서비스 신청</a>
+            </li>
+            <li>
+              <a href="#tab-angular">굿즈 제작</a>
+            </li>
+            <li>
+              <a href="#tab-other">SNS 문의</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section> -->
+    <div class="menu">
+      <nav class="menu__nav">
+        <ul class="menu__list r-list">
+          <li class="menu__group">
+            <a id="mob-nav-home" class="menu__link r-link">Home</a>
+          </li>
+          <li class="menu__group">
+            <a id="mob-nav-purry" class="menu__link r-link">PURRY 소개</a>
+          </li>
+          <li class="menu__group">
+            <a id="mob-nav-service" class="menu__link r-link">Service 신청</a>
+          </li>
+          <li class="menu__group">
+            <a id="mob-nav-goods" class="menu__link r-link">GOODS 제작</a>
+          </li>
+          <li class="menu__group">
+            <a id="mob-nav-sns" class="menu__link r-link">SNS문의</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="menu__toggle r-button" type="button">
+        <span class="menu__hamburger m-hamburger">
+          <span class="m-hamburger__label">
+            <span class="menu__toggle-hint screen-reader">Open menu</span>
+          </span>
+        </span>
+      </button>
+    </div>
+    
     <!-- 모바일 네비게이션 END-->
     <!-- HOME 시작-->
-    <section class="et-slide" id="tab-react">
+    <section class="et-slide home-pc" id="tab-react">
       <div class="top-index">
         <div class="width-100 overflow-hidden">
           <div class="bg-black position-absolute left-0 top-0 width-100 height-100">
@@ -104,7 +182,7 @@
                                 안녕하세요, Purry AI 입니다.
                                 여러분의 귀여운 반려동물에게 다양한 옷을 입히고 싶다면
                                 지금 바로 Purry를 이용해보세요.
-                                <div id="fancy-button">오픈 베타 신청하기</div>
+                              <div id="fancy-button">오픈 베타 신청하기</div>
                             </header>
                           </section>
                           <!-- <div>Hello, I'm Purry</div>
@@ -125,7 +203,8 @@
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
                           <img src="{% static 'core/Korean.png' %}" alt="" />
-                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">Korean
+                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">
+                            Korean
                             Traditional Clothes</p>
                         </div>
                         <div class="hover-title-box padding-55px-lr width-300px sm-width-100 sm-padding-20px-lr">
@@ -162,7 +241,8 @@
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
                           <img src="{% static 'core/Space.png' %}" alt="" />
-                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">SPACE
+                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">
+                            SPACE
                             suit
                           </p>
                         </div>
@@ -247,6 +327,37 @@
       </div>
     </section>
     <!-- HOME END -->
+    <!-- mobile home -->
+    <section class="et-slide home-mobile" id="tab-react2">
+      <section class="mast">
+        <header class="mast__header">
+          <h1 class="mast__title js-spanize">hello, I'm purry</h1>
+          <hr class="sep" />
+          <p class="mast__text js-spanize">
+            안녕하세요, Purry AI 입니다.
+            저는 여러분의 귀여운 반려동물에게
+            다양하고 예쁜 옷을 입혀드리고 있습니다.
+            지금 바로 서비스를 신청해보세요!
+          <div id="fancy-button2">오픈 베타 참여하기</div>
+        </header>
+      </section>
+      <div id="drag-container">
+        <div id="spin-container">
+          <!-- Add your images (or video) here -->
+          <img src="{% static 'core/Korean.png' %}" alt="">
+          <img src="{% static 'core/Tailored.png' %}" alt="">
+          <img src="{% static 'core/Space.png' %}" alt="">
+          <img src="{% static 'core/Space2.png' %}" alt="">
+          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-10.jpg" alt="">
+          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-11.jpg" alt="">
+        
+          <!-- Text at center of ground -->
+          <p>Purry AI</p>
+        </div>
+        <div id="ground"></div>
+      </div>
+      </section>
+    <!-- mobile home end-->
     <section class="et-slide" id="tab-flexbox">
       <div class="intro-service">
         <div id="intro-title">What is <span
@@ -473,7 +584,7 @@
         <ul id="nav">
           <li class="nav-link">
             <h1 data-name="kakaotalk"><a href="http://pf.kakao.com/_xnSxhxixj" target="_blank"
-              style="text-decoration:none; color:white;" rel="noopener noreferrer">Kakaotalk</a></h1>
+                style="text-decoration:none; color:white;" rel="noopener noreferrer">Kakaotalk</a></h1>
           </li>
           <li class="nav-link">
             <h1 data-name="Instagram"><a href="https://instagram.com/purry.ai?igshid=YmMyMTA2M2Y=" target="_blank"
@@ -582,73 +693,249 @@
 </script>
 <script>
   $(document).ready(function () {
-    $("#ser-button").on("click", function () {
+    $("#fancy-button").on("click", function () {
       $("#service").click();
     });
-
-    $(".form-input").on("click", function () {
-      $(".form-container").css("border-left", "5px solid #6667AB");
-      $(".form-container").css("transition", "0.5s");
+    $("#fancy-button2").on("click", function () {
+      $("#service").click();
+    });
+    $("#mob-nav-home").on("click", function () {
+      $("#home").click();
+    });
+    $("#mob-nav-purry").on("click", function () {
+      $("#purry").click();
+    });
+    $("#mob-nav-service").on("click", function () {
+      $("#service").click();
+    });
+    $("#mob-nav-goods").on("click", function () {
+      $("#goods").click();
+    });
+    $("#mob-nav-sns").on("click", function () {
+      $("#sns").click();
     });
 
-    $("html").click(function (e) {
-      if (!$(e.target).hasClass("form-input")) {
-        $(".form-container").css("border-left", "none");
-      }
-    });
 
-    $("#q1").on("click", function () {
-      $("#a1").slideToggle();
-    });
-    $("#q2").on("click", function () {
-      $("#a2").slideToggle();
-    });
-    $("#q3").on("click", function () {
-      $("#a3").slideToggle();
-    });
 
     $(".et-hero-tab").on("click", function () {
       $(".mobile-nav-button").click();
     });
 
+    $("#probeedog").on("click", function () {
+      $(".probeedog-modal").show();
+      $(".modal-body").css("top","50%");
+    })
+
+    $(".close-button").on("click", () => {
+      $(".probeedog-modal").fadeOut();
+      $(".lui-modal").fadeOut();
+    })
 
     $("#lui").on("click", function () {
       $(".lui-modal").show();
+      $(".modal-body").css("top","15%");
     })
   });
-
-  $("#probeedog").on("click", function () {
-    $(".probeedog-modal").show();
-  })
-
-  $(".close-button").on("click", () => {
-    $(".probeedog-modal").fadeOut();
-    $(".lui-modal").fadeOut();
-  })
-
 
 </script>
 <script>
   // 모바일 전용 네비게이션
-  $(document).ready(function () {
-    //Menu button on click event
-    $(".mobile-nav-button").on("click", function () {
-      // Toggles a class on the menu button to transform the burger menu into a cross
-      $(
-        ".mobile-nav-button .mobile-nav-button__line:nth-of-type(1)"
-      ).toggleClass("mobile-nav-button__line--1");
-      $(
-        ".mobile-nav-button .mobile-nav-button__line:nth-of-type(2)"
-      ).toggleClass("mobile-nav-button__line--2");
-      $(
-        ".mobile-nav-button .mobile-nav-button__line:nth-of-type(3)"
-      ).toggleClass("mobile-nav-button__line--3");
+  // //OPEN TRIGGER
+  // var openTrigger = $('.menu-trigger');
+  // var openTriggerTop = openTrigger.find('.menu-trigger-bar.top');
+  // var openTriggerMiddle = openTrigger.find('.menu-trigger-bar.middle');
+  // var openTriggerBottom = openTrigger.find('.menu-trigger-bar.bottom');
 
-      // Toggles a class that slides the menu into view on the screen
-      $(".mobile-menu").toggleClass("mobile-menu--open");
-      return false;
-    });
+  // //CLOSE TRIGGER
+  // var closeTrigger = $('.close-trigger');
+  // var closeTriggerLeft = closeTrigger.find('.close-trigger-bar.left');
+  // var closeTriggerRight = closeTrigger.find('.close-trigger-bar.right');
+
+  // //MENU
+  // var menuContainer = $('.menu-container');
+  // var menu = $('.menu');
+  // var menuTop = $('.menu-bg.top');
+  // var menuMiddle = $('.menu-bg.middle');
+  // var menuBottom = $('.menu-bg.bottom');
+
+  // //TL
+  // var tlOpen = new TimelineMax({ paused: true });
+  // var tlClose = new TimelineMax({ paused: true });
+
+  // //OPEN TIMELINE
+  // tlOpen.add("preOpen")
+  //   .to(openTriggerTop, 0.4, {
+  //     x: "+80px", y: "-80px", delay: 0.1, ease: Power4.easeIn, onComplete: function () {
+  //       // closeTrigger.css('z-index', '25');
+  //     }
+  //   }, "preOpen")
+  //   .to(openTriggerMiddle, 0.4, {
+  //     x: "+=80px", y: "-=80px", ease: Power4.easeIn,
+  //     onComplete: function () {
+  //       openTrigger.css('visibility', 'hidden');
+  //       closeTrigger.css('visibility', 'visible');
+  //     }
+  //   }, "preOpen")
+  //   .to(openTriggerBottom, 0.4, {
+  //     x: "+=80px", y: "-=80px", delay: 0.2, ease: Power4.easeIn
+  //   }, "preOpen")
+  //   .add("open", "-=0.4")
+  //   .to(menuTop, 0.8, {
+  //     y: "13%",
+  //     ease: Power4.easeInOut
+  //   }, "open")
+  //   .to(menuMiddle, 0.8, {
+  //     scaleY: 1,
+  //     ease: Power4.easeInOut
+  //   }, "open")
+  //   .to(menuBottom, 0.8, {
+  //     y: "-114%",
+  //     ease: Power4.easeInOut
+  //   }, "open")
+  //   .fromTo(menu, 0.6, {
+  //     y: 30, opacity: 0, visibility: 'hidden'
+  //   }, {
+  //     y: 0, opacity: 1, visibility: 'visible', ease: Power4.easeOut
+  //   }, "-=0.2")
+  //   .add("preClose", "-=0.8")
+  //   .to(closeTriggerLeft, 0.8, {
+  //     x: "-=100px", y: "+=100px", ease: Power4.easeOut
+  //   }, "preClose")
+  //   .to(closeTriggerRight, 0.8, {
+  //     x: "+=100px", y: "+=100px", delay: 0.2, ease: Power4.easeOut
+  //   }, "preClose");
+
+  // //CLOSE TIMELINE
+  // tlClose.add("close")
+  //   .to(menuTop, 0.2, {
+  //     backgroundColor: "#6295ca", ease: Power4.easeInOut, onComplete: function () {
+  //       // logo.css('z-index', '26');
+  //       // closeTrigger.css('z-index', '5');
+  //       // openTrigger.css('visibility', 'visible');
+  //     }
+  //   }, "close")
+  //   .to(menuMiddle, 0.2, {
+  //     backgroundColor: "#6295ca", ease: Power4.easeInOut
+  //   }, "close")
+  //   .to(menuBottom, 0.2, {
+  //     backgroundColor: "#6295ca", ease: Power4.easeInOut
+  //   }, "close")
+  //   .to(menu, 0.6, {
+  //     y: 20, opacity: 0, ease: Power4.easeOut, onComplete: function () {
+  //       menu.css('visibility', 'hidden');
+  //     }
+  //   }, "close")
+  //   .to(menuTop, 0.8, {
+  //     y: "-113%",
+  //     ease: Power4.easeInOut
+  //   }, "close", "+=0.2")
+  //   .to(menuMiddle, 0.8, {
+  //     scaleY: 0,
+  //     ease: Power4.easeInOut
+  //   }, "close", "+=0.2")
+  //   .to(menuBottom, 0.8, {
+  //     y: "23%",
+  //     ease: Power4.easeInOut,
+  //     onComplete: function () {
+  //       menuTop.css('background-color', '#ffffff');
+  //       menuMiddle.css('background-color', '#ffffff');
+  //       menuBottom.css('background-color', '#ffffff');
+  //     }
+  //   }, "close", "+=0.2")
+  //   .to(closeTriggerLeft, 0.2, {
+  //     x: "+=100px", y: "-=100px", ease: Power4.easeIn,
+  //     onComplete: function () {
+  //       openTrigger.css('visibility', 'visible');
+  //       closeTrigger.css('visibility', 'hidden');
+  //     }
+  //   }, "close")
+  //   .to(closeTriggerRight, 0.2, {
+  //     x: "-=100px", y: "-=100px", delay: 0.1, ease: Power4.easeIn
+  //   }, "close")
+  //   .to(openTriggerTop, 1, {
+  //     x: "-=80px", y: "+=80px", delay: 0.2, ease: Power4.easeOut
+  //   }, "close")
+  //   .to(openTriggerMiddle, 1, {
+  //     x: "-=80px", y: "+=80px", ease: Power4.easeOut
+  //   }, "close")
+  //   .to(openTriggerBottom, 1, {
+  //     x: "-=80px", y: "+=80px", delay: 0.1, ease: Power4.easeOut
+  //   }, "close");
+
+  // //EVENTS
+  // openTrigger.on('click', function () {
+  //   if (tlOpen.progress() < 1) {
+  //     tlOpen.play();
+  //   } else {
+  //     tlOpen.restart();
+  //   }
+  // });
+
+  // closeTrigger.on('click', function () {
+  //   if (tlClose.progress() < 1) {
+  //     tlClose.play();
+  //   } else {
+  //     tlClose.restart();
+  //   }
+  // });
+  /*
+!!!!!
+This code is created to display element's behavior. I'm not a JS expert so don't use it
+!!!!!
+*/
+
+
+(function(){
+  'use strict';
+
+  class Menu {
+    constructor(settings) {
+      this.menuRootNode = settings.menuRootNode;
+      this.isOpened = false;
+    }
+    
+    changeMenuState(menuState) {
+      return this.isOpened = !menuState;
+    }
+    
+    changeToggleHint(toggleHint, toggleNode) {
+      toggleNode.textContent = toggleHint;
+      return toggleHint; 
+    }
+  }
+
+  const menuClassesNames = {
+    rootClass: 'menu',
+    activeClass: 'menu_activated',
+    toggleClass: 'menu__toggle',
+    toggleHintClass: 'menu__toggle-hint'
+  }
+  
+  const jsMenuNode = document.querySelector(`.${menuClassesNames.rootClass}`);
+  const demoMenu = new Menu ({
+    menuRootNode: jsMenuNode
   });
+  
+  function getCurrentToggleHint(currentMenuState) {
+    return (currentMenuState !== true) ? 'Open menu' : 'Close menu';
+  }
+  
+  function toggleMenu(event) {
+    
+      let currentMenuState = demoMenu.changeMenuState(demoMenu.isOpened);
+      let toggleHint = getCurrentToggleHint(currentMenuState);
+      
+      demoMenu.changeToggleHint(
+        toggleHint, 
+        demoMenu.menuRootNode.querySelector(`.${menuClassesNames.toggleHintClass}`)
+      );
+      demoMenu.menuRootNode.classList.toggle(`${menuClassesNames.activeClass}`);
+      
+      return currentMenuState;  
+  }
+  
+  jsMenuNode.querySelector(`.${menuClassesNames.toggleClass}`).addEventListener('click', toggleMenu);
+})();
 </script>
 <script>
   var swiperBottomScrollbarFull = new Swiper('.swiper-bottom-scrollbar-full', {
@@ -736,36 +1023,6 @@
 
 </script>
 <script>
-  /* ====================== *
- *  Toggle Between        *
- *  Sign Up / Login       *
- * ====================== */
-  $(document).ready(function () {
-    $('#goRight').on('click', function () {
-      $('#slideBox').animate({
-        'marginLeft': '0'
-      });
-      $('.topLayer').animate({
-        'marginLeft': '100%'
-      });
-    });
-    $('#goLeft').on('click', function () {
-      if (window.innerWidth > 769) {
-        $('#slideBox').animate({
-          'marginLeft': '50%'
-        });
-      }
-      else {
-        $('#slideBox').animate({
-          'marginLeft': '20%'
-        });
-      }
-      $('.topLayer').animate({
-        'marginLeft': '0'
-      });
-    });
-  });
-
   /* ====================== *
    *  Initiate Canvas       *
    * ====================== */
@@ -968,5 +1225,128 @@ Spanizer
     spanizeLetters.init();
   })(jQuery);
 </script>
+<script>
+  // home-mobile
+// Author: Hoang Tran (https://fb.com/99.hoangtran)
 
+// Github verson (1 file .html): https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
+
+// Give me a coffee <3 https://github.com/HoangTran0410/HoangTran0410/blob/main/DONATE.md
+
+
+// You can change global variables here:
+var radius = 240; // how big of the radius
+var autoRotate = true; // auto rotate or not
+var rotateSpeed = -60; // unit: seconds/360 degrees
+var imgWidth = 120; // width of images (unit: px)
+var imgHeight = 170; // height of images (unit: px)
+
+/*
+     NOTE:
+       + imgWidth, imgHeight will work for video
+       + if imgWidth, imgHeight too small, play/pause button in <video> will be hidden
+       + Music link are taken from: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HauMaster&playlist=1&song=1&background=28
+       + Custom from code in tiktok video  https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
+*/
+
+
+// ===================== start =======================
+// animation start after 1000 miliseconds
+setTimeout(init, 1000);
+
+var odrag = document.getElementById('drag-container');
+var ospin = document.getElementById('spin-container');
+var aImg = ospin.getElementsByTagName('img');
+var aVid = ospin.getElementsByTagName('video');
+var aEle = [...aImg, ...aVid]; // combine 2 arrays
+
+// Size of images
+ospin.style.width = imgWidth + "px";
+ospin.style.height = imgHeight + "px";
+
+// Size of ground - depend on radius
+var ground = document.getElementById('ground');
+ground.style.width = radius * 3 + "px";
+ground.style.height = radius * 3 + "px";
+
+function init(delayTime) {
+  for (var i = 0; i < aEle.length; i++) {
+    aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+    aEle[i].style.transition = "transform 1s";
+    aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+  }
+}
+
+function applyTranform(obj) {
+  // Constrain the angle of camera (between 0 and 180)
+  if(tY > 180) tY = 180;
+  if(tY < 0) tY = 0;
+
+  // Apply the angle
+  obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+}
+
+function playSpin(yes) {
+  ospin.style.animationPlayState = (yes?'running':'paused');
+}
+
+var sX, sY, nX, nY, desX = 0,
+    desY = 0,
+    tX = 0,
+    tY = 10;
+
+// auto spin
+if (autoRotate) {
+  var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+  ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+}
+
+// setup events
+document.onpointerdown = function (e) {
+  clearInterval(odrag.timer);
+  e = e || window.event;
+  var sX = e.clientX,
+      sY = e.clientY;
+
+  this.onpointermove = function (e) {
+    e = e || window.event;
+    var nX = e.clientX,
+        nY = e.clientY;
+    desX = nX - sX;
+    desY = nY - sY;
+    tX += desX * 0.1;
+    tY += desY * 0.1;
+    applyTranform(odrag);
+    sX = nX;
+    sY = nY;
+  };
+
+  this.onpointerup = function (e) {
+    odrag.timer = setInterval(function () {
+      desX *= 0.95;
+      desY *= 0.95;
+      tX += desX * 0.1;
+      tY += desY * 0.1;
+      applyTranform(odrag);
+      playSpin(false);
+      if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+        clearInterval(odrag.timer);
+        playSpin(true);
+      }
+    }, 17);
+    this.onpointermove = this.onpointerup = null;
+  };
+
+  return false;
+};
+
+document.onmousewheel = function(e) {
+  e = e || window.event;
+  var d = e.wheelDelta / 20 || -e.detail;
+  radius += d;
+  init(1);
+};
+
+
+</script>
 </html>
