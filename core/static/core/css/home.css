@@ -12397,6 +12397,7 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
     position: absolute;
     bottom: 50px;
     opacity: 0;
+    background:black;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
