@@ -63,10 +63,7 @@
   transition: background 250ms ease
 }
 
-.slider-control button:hover {
-  cursor: pointer;
-  background: rgba(255, 255, 255, .2)
-}
+
 
 .slider-control button:focus {
   outline: 0
@@ -141,6 +138,14 @@
   line-height: 100%
 }
 
-.close-button:hover {
-  background-color: rgba(255, 255, 255, .2)
+
+
+@media(hover:hover){
+  .close-button:hover {
+    background-color: rgba(255, 255, 255, .2)
+  }
+  .slider-control button:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, .2)
+  }
 }

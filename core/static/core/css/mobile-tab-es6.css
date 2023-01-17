@@ -29,6 +29,10 @@
         height:2rem;
     }
 
+
+}
+
+@media(hover:hover){
     .wrap h1:hover::before {
         top: -13px;
         left: -7px;
@@ -40,7 +44,6 @@
         top:47%;
     }
 }
-
 @media screen and (max-width: 300px) {
     .wrap h1{
         font-size:2rem !important;

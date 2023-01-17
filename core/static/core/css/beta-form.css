@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .form-container {
   margin: 0;
   height: 100%;
@@ -9,14 +10,15 @@
   font-family: "Roboto", sans-serif;
 }
 
-#tab-es6{
-    background: #673ab7;
-    height:100vh;
+#tab-es6 {
+  background: #673ab7;
+  height: 100vh;
 }
+
 @media (max-height:600px) {
-   #tab-es6{
-    height:120vh;
-   } 
+  #tab-es6 {
+    height: 120vh;
+  }
 }
 
 .backLeft {
@@ -80,20 +82,25 @@
   overflow: hidden;
   background: #000000;
   right: 0;
-  z-index:10;
+  z-index: 10;
   position: absolute;
 }
+
 .right label {
   color: #dbdbdb;
 }
+
 .right input {
   border-bottom: 1px solid #dbdbdb;
-  width:80%;
-  color:#dbdbdb;
+  width: 80%;
+  color: #dbdbdb;
 }
-.right input:focus, .right input:active {
+
+.right input:focus,
+.right input:active {
   border-color: #673AB7;
 }
+
 .right input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #f9f9f9 inset;
   -webkit-text-fill-color: #212121;
@@ -123,6 +130,7 @@
 .form-element {
   margin: 1.6em 0;
 }
+
 .form-element.form-submit {
   margin: 1.6em 0 0;
 }
@@ -144,8 +152,10 @@
   position: relative;
 }
 
-.checkbox:focus, .checkbox:checked:focus,
-.checkbox:active, .checkbox:checked:active {
+.checkbox:focus,
+.checkbox:checked:focus,
+.checkbox:active,
+.checkbox:checked:active {
   border-color: #03A9F4;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -170,6 +180,7 @@
   display: flex;
   align-items: center;
 }
+
 .form-checkbox label {
   margin: 0 6px 0;
   font-size: 0.72em;
@@ -195,6 +206,7 @@
 .form-container button.login {
   background: #673AB7;
 }
+
 .form-container button.off {
   background: none;
   box-shadow: none;
@@ -205,29 +217,57 @@
   color: #673AB7;
 }
 
-.form-container button:focus, .form-container button:active, .form-container button:hover {
+.form-container button:focus,
+.form-container button:active {
   box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:focus.login, button:active.login, button:hover.login {
+button:focus.login,
+button:active.login {
   background: #512DA8;
 }
-.form-container button:focus.off,.form-container button:active.off,.form-container button:hover.off {
+
+.form-container button:focus.off,
+.form-container button:active.off {
   box-shadow: none;
 }
 
-button:focus.off.login, button:active.off.login, button:hover.off.login {
+button:focus.off.login,
+button:active.off.login {
   color: #512DA8;
   background: #e3e3e3;
 }
 
-/* 반려동물 이미지 업로드 */
-#file-container{
-    background: #9b59b6;
-    color: #ecf0f1;
-    text-align: left;
-    display: inline;
+@media(hover:hover) {
+  .form-container button:hover {
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
   }
+
+  button:hover.login {
+    background: #512DA8;
+  }
+
+  .form-container button:hover.off {
+    box-shadow: none;
+  }
+
+  button:hover.off.login {
+    color: #512DA8;
+    background: #e3e3e3;
+  }
+
+  #file-container label:hover {
+    background: #6b3880;
+  }
+}
+
+/* 반려동물 이미지 업로드 */
+#file-container {
+  background: #9b59b6;
+  color: #ecf0f1;
+  text-align: left;
+  display: inline;
+}
 
 .file-upload {
   position: absolute;
@@ -239,13 +279,16 @@ button:focus.off.login, button:active.off.login, button:hover.off.login {
   display: inline-block;
   background: #623475;
   cursor: pointer;
-  font-size:1em;
-}
-#file-container label:hover{
-  background: #6b3880;
+  font-size: 1em;
 }
 
-#filename1, #filename2, #filename3, #filename4, #filename5 {
+
+
+#filename1,
+#filename2,
+#filename3,
+#filename4,
+#filename5 {
   padding: 0.5em;
   float: left;
   width: 150px;
@@ -253,6 +296,7 @@ button:focus.off.login, button:active.off.login, button:hover.off.login {
   overflow: hidden;
   background: #804399;
 }
+
 /* 반려동물 이미지 업로드 */
 
 

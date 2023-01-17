@@ -24,9 +24,7 @@
 	cursor: pointer
 }
 
-.wrap h1:hover {
-	transform: skew(10deg)
-}
+
 
 .wrap h1::before {
 	content: attr(data-name);
@@ -40,11 +38,7 @@
 	padding-left: 20px
 }
 
-.wrap h1:hover::before {
-	top: -3px;
-	left: 0;
-	color: purple
-}
+
 
 .wrap h1::after {
 	content: "";
@@ -58,7 +52,19 @@
 	transition: all .3s ease
 }
 
-.wrap h1:hover::after {
-	width: 120%;
-	outline: 5px solid #020024
+
+
+@media (hover:hover){
+	.wrap h1:hover {
+		transform: skew(10deg)
+	}
+	.wrap h1:hover::before {
+		top: -3px;
+		left: 0;
+		color: purple
+	}
+	.wrap h1:hover::after {
+		width: 120%;
+		outline: 5px solid #020024
+	}
 }

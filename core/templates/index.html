@@ -34,11 +34,6 @@
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-home.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-tab-flexbox.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-tab-es6.css' %}" />
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/swiper.css' %}" />  -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/slick.css' %}" />  -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/slick-theme.css' %}" />  -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/font-awesome.min.css' %}" />  -->
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'core/css/external/bootstrap.css' %}" />  -->
   <!-- css 가져오기 end-->
   <!-- js 가져오기 -->
   <script type="text/javascript" src="{% static 'core/js/external/swiper.js' %}"></script>
@@ -70,63 +65,6 @@
     </section>
     <!-- PC 네비게이션 END-->
     <!-- 모바일 네비게이션 -->
-    <!-- <section class="mobile-section">
-      <div class="nav-back">
-        <div class="mobile-nav-button">
-          <div class="mobile-nav-button__line"></div>
-          <div class="mobile-nav-button__line"></div>
-          <div class="mobile-nav-button__line"></div>
-        </div>
-      </div>
-
-      <nav class="mobile-menu">
-        <ul class="et-hero-tabs-container2">
-          <li><a class="et-hero-tab" href="#tab-react">HOME</a></li>
-          <li><a class="et-hero-tab" href="#tab-flexbox">PURRY 소개</a></li>
-          <li><a class="et-hero-tab" id="service" href="#tab-es6">서비스 신청</a></li>
-          <li><a class="et-hero-tab" href="#tab-angular">굿즈 제작</a></li>
-          <li><a class="et-hero-tab" href="#tab-other">SNS 문의</a></li>
-          <span class="et-hero-tab-slider"></span>
-        </ul>
-      </nav>
-    </section> -->
-    <!-- BASEN ON DRIBBBLE SHOT: https://dribbble.com/shots/2209627-UI8-Nav -->
-    <!-- 
-    <section class="mobile-section">
-      <span class="menu-trigger">
-        <i class="menu-trigger-bar top"></i>
-        <i class="menu-trigger-bar middle"></i>
-        <i class="menu-trigger-bar bottom"></i>
-      </span>
-      <span class="close-trigger">
-        <i class="close-trigger-bar left"></i>
-        <i class="close-trigger-bar right"></i>
-      </span>
-      <div class="inner-container">
-        <i class="menu-bg top"></i>
-        <i class="menu-bg middle"></i>
-        <i class="menu-bg bottom"></i>
-        <div class="menu-container">
-          <ul class="menu">
-            <li>
-              <a href="#tab-react">HOME</a>
-            </li>
-            <li>
-              <a href="#tab-flexbox">PURRY 소개</a>
-            </li>
-            <li>
-              <a href="#tab-es6">서비스 신청</a>
-            </li>
-            <li>
-              <a href="#tab-angular">굿즈 제작</a>
-            </li>
-            <li>
-              <a href="#tab-other">SNS 문의</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
     <div class="menu">
       <nav class="menu__nav">
         <ul class="menu__list r-list">
@@ -744,151 +682,6 @@
 </script>
 <script>
   // 모바일 전용 네비게이션
-  // //OPEN TRIGGER
-  // var openTrigger = $('.menu-trigger');
-  // var openTriggerTop = openTrigger.find('.menu-trigger-bar.top');
-  // var openTriggerMiddle = openTrigger.find('.menu-trigger-bar.middle');
-  // var openTriggerBottom = openTrigger.find('.menu-trigger-bar.bottom');
-
-  // //CLOSE TRIGGER
-  // var closeTrigger = $('.close-trigger');
-  // var closeTriggerLeft = closeTrigger.find('.close-trigger-bar.left');
-  // var closeTriggerRight = closeTrigger.find('.close-trigger-bar.right');
-
-  // //MENU
-  // var menuContainer = $('.menu-container');
-  // var menu = $('.menu');
-  // var menuTop = $('.menu-bg.top');
-  // var menuMiddle = $('.menu-bg.middle');
-  // var menuBottom = $('.menu-bg.bottom');
-
-  // //TL
-  // var tlOpen = new TimelineMax({ paused: true });
-  // var tlClose = new TimelineMax({ paused: true });
-
-  // //OPEN TIMELINE
-  // tlOpen.add("preOpen")
-  //   .to(openTriggerTop, 0.4, {
-  //     x: "+80px", y: "-80px", delay: 0.1, ease: Power4.easeIn, onComplete: function () {
-  //       // closeTrigger.css('z-index', '25');
-  //     }
-  //   }, "preOpen")
-  //   .to(openTriggerMiddle, 0.4, {
-  //     x: "+=80px", y: "-=80px", ease: Power4.easeIn,
-  //     onComplete: function () {
-  //       openTrigger.css('visibility', 'hidden');
-  //       closeTrigger.css('visibility', 'visible');
-  //     }
-  //   }, "preOpen")
-  //   .to(openTriggerBottom, 0.4, {
-  //     x: "+=80px", y: "-=80px", delay: 0.2, ease: Power4.easeIn
-  //   }, "preOpen")
-  //   .add("open", "-=0.4")
-  //   .to(menuTop, 0.8, {
-  //     y: "13%",
-  //     ease: Power4.easeInOut
-  //   }, "open")
-  //   .to(menuMiddle, 0.8, {
-  //     scaleY: 1,
-  //     ease: Power4.easeInOut
-  //   }, "open")
-  //   .to(menuBottom, 0.8, {
-  //     y: "-114%",
-  //     ease: Power4.easeInOut
-  //   }, "open")
-  //   .fromTo(menu, 0.6, {
-  //     y: 30, opacity: 0, visibility: 'hidden'
-  //   }, {
-  //     y: 0, opacity: 1, visibility: 'visible', ease: Power4.easeOut
-  //   }, "-=0.2")
-  //   .add("preClose", "-=0.8")
-  //   .to(closeTriggerLeft, 0.8, {
-  //     x: "-=100px", y: "+=100px", ease: Power4.easeOut
-  //   }, "preClose")
-  //   .to(closeTriggerRight, 0.8, {
-  //     x: "+=100px", y: "+=100px", delay: 0.2, ease: Power4.easeOut
-  //   }, "preClose");
-
-  // //CLOSE TIMELINE
-  // tlClose.add("close")
-  //   .to(menuTop, 0.2, {
-  //     backgroundColor: "#6295ca", ease: Power4.easeInOut, onComplete: function () {
-  //       // logo.css('z-index', '26');
-  //       // closeTrigger.css('z-index', '5');
-  //       // openTrigger.css('visibility', 'visible');
-  //     }
-  //   }, "close")
-  //   .to(menuMiddle, 0.2, {
-  //     backgroundColor: "#6295ca", ease: Power4.easeInOut
-  //   }, "close")
-  //   .to(menuBottom, 0.2, {
-  //     backgroundColor: "#6295ca", ease: Power4.easeInOut
-  //   }, "close")
-  //   .to(menu, 0.6, {
-  //     y: 20, opacity: 0, ease: Power4.easeOut, onComplete: function () {
-  //       menu.css('visibility', 'hidden');
-  //     }
-  //   }, "close")
-  //   .to(menuTop, 0.8, {
-  //     y: "-113%",
-  //     ease: Power4.easeInOut
-  //   }, "close", "+=0.2")
-  //   .to(menuMiddle, 0.8, {
-  //     scaleY: 0,
-  //     ease: Power4.easeInOut
-  //   }, "close", "+=0.2")
-  //   .to(menuBottom, 0.8, {
-  //     y: "23%",
-  //     ease: Power4.easeInOut,
-  //     onComplete: function () {
-  //       menuTop.css('background-color', '#ffffff');
-  //       menuMiddle.css('background-color', '#ffffff');
-  //       menuBottom.css('background-color', '#ffffff');
-  //     }
-  //   }, "close", "+=0.2")
-  //   .to(closeTriggerLeft, 0.2, {
-  //     x: "+=100px", y: "-=100px", ease: Power4.easeIn,
-  //     onComplete: function () {
-  //       openTrigger.css('visibility', 'visible');
-  //       closeTrigger.css('visibility', 'hidden');
-  //     }
-  //   }, "close")
-  //   .to(closeTriggerRight, 0.2, {
-  //     x: "-=100px", y: "-=100px", delay: 0.1, ease: Power4.easeIn
-  //   }, "close")
-  //   .to(openTriggerTop, 1, {
-  //     x: "-=80px", y: "+=80px", delay: 0.2, ease: Power4.easeOut
-  //   }, "close")
-  //   .to(openTriggerMiddle, 1, {
-  //     x: "-=80px", y: "+=80px", ease: Power4.easeOut
-  //   }, "close")
-  //   .to(openTriggerBottom, 1, {
-  //     x: "-=80px", y: "+=80px", delay: 0.1, ease: Power4.easeOut
-  //   }, "close");
-
-  // //EVENTS
-  // openTrigger.on('click', function () {
-  //   if (tlOpen.progress() < 1) {
-  //     tlOpen.play();
-  //   } else {
-  //     tlOpen.restart();
-  //   }
-  // });
-
-  // closeTrigger.on('click', function () {
-  //   if (tlClose.progress() < 1) {
-  //     tlClose.play();
-  //   } else {
-  //     tlClose.restart();
-  //   }
-  // });
-  /*
-!!!!!
-This code is created to display element's behavior. I'm not a JS expert so don't use it
-!!!!!
-*/
-
-
   (function () {
     'use strict';
 
@@ -1283,7 +1076,7 @@ Spanizer
 
   function applyTranform(obj) {
     // Constrain the angle of camera (between 0 and 180)
-    if (tY > 180) tY = 180;
+    if (tY > 90) tY = 90;
     if (tY < 0) tY = 0;
 
     // Apply the angle

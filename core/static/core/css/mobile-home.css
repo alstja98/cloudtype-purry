@@ -15,7 +15,7 @@
     transform-style: preserve-3d;
     -webkit-transform: rotateX(-10deg);
     transform: rotateX(-10deg);
-    padding-top:100px;
+    padding-top: 100px;
 }
 
 #drag-container img,
@@ -35,12 +35,7 @@
     -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
 }
 
-#drag-container img:hover,
-#drag-container video:hover {
-    -webkit-box-shadow: 0 0 15px #fffd;
-    box-shadow: 0 0 15px #fffd;
-    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
-}
+
 
 #drag-container p {
     font-family: Serif;
@@ -158,25 +153,26 @@
         margin-bottom: 25px;
     }
 
-    
+
     .mast {
-        position:absolute;
+        position: absolute;
         height: 100%;
         top: -10%;
-        z-index:1;
+        z-index: 1;
         background-color: transparent;
     }
 
-    .mast > header{
+    .mast>header {
         background-color: transparent;
-        z-index:2;
-        top:8%;
-        left:5%;
-        height:100%;
+        z-index: 2;
+        top: 8%;
+        left: 5%;
+        height: 100%;
 
 
     }
-    .mast:after{
+
+    .mast:after {
         z-index: 1;
         background-color: transparent;
     }
@@ -184,7 +180,7 @@
     #tab-react2 {
         height: 100vh;
     }
-    
+
 
     #fancy-button2 {
         color: white;
@@ -199,10 +195,10 @@
         position: relative;
         transition-duration: .3s;
         width: 180px;
-      }
-      
-      #fancy-button2:after {
-          content: "";
+    }
+
+    #fancy-button2:after {
+        content: "";
         position: absolute;
         background: #fcd4a4;
         width: 1px;
@@ -210,9 +206,9 @@
         top: 0px;
         right: 0px;
         transition-duration: .3s;
-      }
-      
-      #fancy-button2:before {
+    }
+
+    #fancy-button2:before {
         content: "";
         position: absolute;
         background: #fcd4a4;
@@ -221,15 +217,25 @@
         bottom: 0px;
         left: 0px;
         transition-duration: .3s;
-      }
-      
-      #fancy-button2:hover {
-        color: #fcd4a4;
-      }
-      
-      #fancy-button2:hover:after, #fancy-button2:hover:before {
-        height: 100%;
-      }
+    }
+
+    @media(hover:hover) {
+        #fancy-button2:hover {
+            color: #fcd4a4;
+        }
+
+        #fancy-button2:hover:after,
+        #fancy-button2:hover:before {
+            height: 100%;
+        }
+
+        #drag-container img:hover,
+        #drag-container video:hover {
+            -webkit-box-shadow: 0 0 15px #fffd;
+            box-shadow: 0 0 15px #fffd;
+            -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+        }
+    }
 
 
 }
