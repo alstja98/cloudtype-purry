@@ -32,3 +32,9 @@
     background-position: 500%
   }
 }
+
+@media screen and (max-width: 300px) {
+  #tab-angular p {
+    font-size: 1.5em;
+  }
+}

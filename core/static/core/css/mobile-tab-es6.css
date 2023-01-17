@@ -31,14 +31,15 @@
 
 
     .wrap h1:hover::before {
-        top: -13px;
-        left: -7px;
+        top: -5px;
+        left: -12px;
         color: purple
     }
     .wrap h1:hover::after{
         left:53%;
         width:115%;
-        top:47%;
+        top:50%;
+        border:1px solid black;
     }
 
 }
