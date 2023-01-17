@@ -73,7 +73,7 @@
   z-index: 502;
   top: 0;
   position: absolute;
-  height: 475px;
+  height: 525px;
   width: 6%;
   left: 1%;
   background: #313131
@@ -83,7 +83,7 @@
   z-index: 502;
   position: absolute;
   top: 0;
-  height: 475px;
+  height: 525px;
   width: 12%;
   left: 38%;
   background: #313131
@@ -93,7 +93,7 @@
   z-index: 502;
   position: absolute;
   top: 0;
-  height: 475px;
+  height: 525px;
   width: 33%;
   left: 6%;
   background: rgba(0, 0, 0, .65)

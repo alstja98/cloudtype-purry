@@ -15,8 +15,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet" />
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,600' rel='stylesheet' type='text/css'>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -217,7 +215,7 @@
                     <div class="height-100 display-table">
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
-                          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-10.jpg" alt="" />
+                          <img src="{% static 'core/check_jacket.png' %}" alt="" />
                           <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">Web
                             and
                             Photography</p>
@@ -225,7 +223,7 @@
                         <div class="hover-title-box padding-55px-lr width-300px sm-width-100 sm-padding-20px-lr">
                           <div class="separator width-50px bg-black md-display-none xs-margin-lr-auto"></div>
                           <h3><a class="text-white font-weight-600 alt-font text-white-hover"
-                              href="single-project-page-05.html">Violator Series</a></h3>
+                              href="single-project-page-05.html">Tweed Jacket</a></h3>
                         </div>
                       </div>
                     </div>
@@ -236,7 +234,7 @@
                     <div class="height-100 display-table">
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
-                          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-11.jpg" alt="" />
+                          <img src="{% static 'core/Animation.png' %}" alt="" />
                           <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">
                             Branding
                             and
@@ -245,7 +243,7 @@
                         <div class="hover-title-box padding-55px-lr width-300px sm-width-100 sm-padding-20px-lr">
                           <div class="separator width-50px bg-black md-display-none xs-margin-lr-auto"></div>
                           <h3><a class="text-white font-weight-600 alt-font text-white-hover"
-                              href="single-project-page-01.html">Banana Design</a></h3>
+                              href="single-project-page-01.html">Animation</a></h3>
                         </div>
                       </div>
                     </div>
@@ -286,8 +284,8 @@
           <img src="{% static 'core/Tailored.png' %}" alt="">
           <img src="{% static 'core/Space.png' %}" alt="">
           <img src="{% static 'core/Space2.png' %}" alt="">
-          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-10.jpg" alt="">
-          <img src="http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-11.jpg" alt="">
+          <img src="{% static 'core/Animation.png' %}" alt="">
+          <img src="{% static 'core/check_jacket.png' %}" alt="">
 
           <!-- Text at center of ground -->
           <p>Purry AI</p>
@@ -665,7 +663,11 @@
 
     $("#probeedog").on("click", function () {
       $(".probeedog-modal").show();
-      $(".modal-body").css("top", "50%");
+      if(window.innerHeight <= 825){
+        $(".modal-body").css("top", "15%");
+      }else{
+        $(".modal-body").css("top", "50%");
+      };
     })
 
     $(".close-button").on("click", () => {
