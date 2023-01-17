@@ -447,12 +447,12 @@
                 <h2>Login</h2>
                 <form action="/app1/openbeta/" method="post" enctype="multipart/form-data">
                   <div class="form-element form-stack">
-                    <label for="name" class="form-label">신청자 이름</label>
+                    <label for="name" class="form-label" id="name-label">신청자 이름</label>
                     <input id="name" type="text" name="name" autocomplete="new-password" class="form-input form-input2"
                       placeholder="본인의 이름을 적어주세요.">
                   </div>
                   <div class="form-element form-stack">
-                    <label for="photo" class="form-label">신청자 이메일</label>
+                    <label for="photo" class="form-label" id="email-label">신청자 이메일</label>
                     <input id="photo" type="text" name="email" autocomplete="new-password"
                       class="form-input form-input2" placeholder="결과물을 받을 이메일을 적어주세요.">
                   </div>
@@ -460,19 +460,19 @@
                   <div class="form-element form-stack" id="file-container">
                     <!-- <input type="file" id="file" name="myfiles" multiple /> -->
                     <span id="filename1">정면 사진</span>
-                    <label for="file-upload1">찾기<input type="file" class="file-upload" id="file-upload1"
+                    <label for="file-upload1">찾기<input type="file" class="file-upload" id="file-upload1" accept=".jpg, .png, .jpeg, .heif"
                         name="myfile1"></label><br>
                     <span id="filename2">위 사진</span>
-                    <label for="file-upload2">찾기<input type="file" class="file-upload" id="file-upload2"
+                    <label for="file-upload2">찾기<input type="file" class="file-upload" id="file-upload2" accept=".jpg, .png, .jpeg, .heif"
                         name="myfile2"></label><br>
                     <span id="filename3">아래 사진</span>
-                    <label for="file-upload3">찾기<input type="file" class="file-upload" id="file-upload3"
+                    <label for="file-upload3">찾기<input type="file" class="file-upload" id="file-upload3" accept=".jpg, .png, .jpeg, .heif"
                         name="myfile3"></label><br>
                     <span id="filename4">우측 사진</span>
-                    <label for="file-upload4">찾기<input type="file" class="file-upload" id="file-upload4"
+                    <label for="file-upload4">찾기<input type="file" class="file-upload" id="file-upload4" accept=".jpg, .png, .jpeg, .heif"
                         name="myfile4"></label><br>
                     <span id="filename5">좌측 사진</span>
-                    <label for="file-upload5">찾기<input type="file" class="file-upload" id="file-upload5"
+                    <label for="file-upload5">찾기<input type="file" class="file-upload" id="file-upload5" accept=".jpg, .png, .jpeg, .heif"
                         name="myfile5"></label><br>
                   </div>
                   <div class="form-element form-submit">
@@ -521,20 +521,20 @@
 
         <ul id="nav">
           <li class="nav-link">
-            <h1 data-name="kakaotalk"><a href="http://pf.kakao.com/_xnSxhxixj" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer">Kakaotalk</a></h1>
+            <a href="http://pf.kakao.com/_xnSxhxixj" target="_blank"
+                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="kakaotalk">Kakaotalk</h1></a>
           </li>
           <li class="nav-link">
-            <h1 data-name="Instagram"><a href="https://instagram.com/purry.ai?igshid=YmMyMTA2M2Y=" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer">Instagram</a></h1>
+            <a href="https://instagram.com/purry.ai?igshid=YmMyMTA2M2Y=" target="_blank"
+                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="Instagram">Instagram</h1></a>
           </li>
           <li class="nav-link">
-            <h1 data-name="Email"><a href="mailto:purryai@gmail.com" style="text-decoration:none; color:white;"
-                rel="noopener noreferrer">Email</a></h1>
+            <a href="mailto:purryai@gmail.com" style="text-decoration:none; color:white;"
+                rel="noopener noreferrer"><h1 data-name="Email">Email</h1></a>
           </li>
           <li class="nav-link">
-            <h1 data-name="Community"><a href="https://open.kakao.com/o/gcBoAOVe" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer">Community</a></h1>
+            <a href="https://open.kakao.com/o/gcBoAOVe" target="_blank"
+                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="Community">Community</h1></a>
           </li>
         </ul>
       </div>
@@ -677,6 +677,36 @@
       $(".lui-modal").show();
       $(".modal-body").css("top", "15%");
     })
+
+    $("#name").on("click", ()=>{
+      $("#name-label").click();
+    })
+    $("#photo").on("click", ()=>{
+      $("#email-label").click();
+    })
+
+    $(".login").on("click", (e)=>{
+      e.preventDefault();
+      if(!$("#name").val()){
+        alert("이름을 입력해주세요!");
+      }else if(!$("#photo").val()){
+        alert("이메일을 입력해주세요!");
+      }else if(!$("#file-upload1")[0].files[0]){
+        alert("정면 사진을 추가해주세요!");
+      }else if(!$("#file-upload2")[0].files[0]){
+        alert("위에서 찍은 사진을 추가해주세요!");
+      }else if(!$("#file-upload3")[0].files[0]){
+        alert("아래에서 찍은 사진을 추가해주세요!");
+      }else if(!$("#file-upload4")[0].files[0]){
+        alert("우측 에서 찍은 사진을 추가해주세요!");
+      }else if(!$("#file-upload5")[0].files[0]){
+        alert("좌측에서 찍은 사진을 추가해주세요!");
+      }else{
+        $("form").submit();
+      }
+    });
+
+
   });
 
 </script>
@@ -993,6 +1023,8 @@
       var filename = m[1];
       $('#filename5').text(filename);
     });
+
+  
   });
 </script>
 <script>
