@@ -149,7 +149,7 @@
 
     .mast__text {
         font-size: 0.8em;
-        font-family: auto;
+        font-family: 'Chosunilbo_myungjo';
         margin-bottom: 25px;
     }
 
@@ -184,8 +184,8 @@
 
     #fancy-button2 {
         color: white;
-        font-size: 13px;
-        font-family: auto;
+        font-size: 14px;
+        font-family: 'Hahmlet-Regular';
         text-transform: uppercase;
         letter-spacing: .2em;
         border-top: 1px solid #fcd4a4;
@@ -219,23 +219,34 @@
         transition-duration: .3s;
     }
 
-    @media(hover:hover) {
-        #fancy-button2:hover {
-            color: #fcd4a4;
-        }
-
-        #fancy-button2:hover:after,
-        #fancy-button2:hover:before {
-            height: 100%;
-        }
-
-        #drag-container img:hover,
-        #drag-container video:hover {
-            -webkit-box-shadow: 0 0 15px #fffd;
-            box-shadow: 0 0 15px #fffd;
-            -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
-        }
+    #filename1,
+    #filename2,
+    #filename3,
+    #filename4,
+    #filename5 {
+        width: 140px;
+        font-size:0.9em;
     }
+    #file-container label{
+        font-size:0.9em;
+      }
+
+    #fancy-button2:hover {
+        color: #fcd4a4;
+    }
+
+    #fancy-button2:hover:after,
+    #fancy-button2:hover:before {
+        height: 100%;
+    }
+
+    #drag-container img:hover,
+    #drag-container video:hover {
+        -webkit-box-shadow: 0 0 15px #fffd;
+        box-shadow: 0 0 15px #fffd;
+        -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+    }
+
 
 
 }

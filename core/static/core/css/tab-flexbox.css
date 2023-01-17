@@ -99,8 +99,8 @@
 
 .flexbox-title {
   color: #aeacb0;
-  font-family: arial;
-  font-size: 14px;
+  font-family:'RIDIBatang';
+  font-size: 15px;
   font-style: italic;
   margin-top: 4px
 }
@@ -135,5 +135,6 @@
   font-style: normal;
   font-weight: 400;
   color: #aeacb0;
-  font-family: 'Noto Sans KR', sans-serif
+  font-family: 'RIDIBatang'
+
 }

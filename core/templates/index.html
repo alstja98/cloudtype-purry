@@ -18,7 +18,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Purry OpenBeta</title>
   <!-- css 가져오기 -->
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/home.css' %}" />
@@ -121,13 +121,6 @@
                               <div id="fancy-button">오픈 베타 신청하기</div>
                             </header>
                           </section>
-                          <!-- <div>Hello, I'm Purry</div>
-                            <div>안녕하세요,
-                              Purry
-                              입니다.<br>
-                              저는 귀여운 동물에게 다양한 옷을 입혀봄으로써 탈바꿈시킬 수 있는 AI입니다.<br>
-                              당신의 반려동물에게 새로운 옷을 입혀보세요!</p>
-                            </div> -->
                         </div>
                       </div>
                     </div>
@@ -458,20 +451,20 @@
                   <div class="form-element form-stack" id="file-container">
                     <!-- <input type="file" id="file" name="myfiles" multiple /> -->
                     <span id="filename1">정면 사진</span>
-                    <label for="file-upload1">찾기<input type="file" class="file-upload" id="file-upload1" accept=".jpg, .png, .jpeg, .heif"
-                        name="myfile1"></label><br>
+                    <label for="file-upload1">찾기<input type="file" class="file-upload" id="file-upload1"
+                        accept=".jpg, .png, .jpeg, .heif" name="myfile1"></label><br>
                     <span id="filename2">위 사진</span>
-                    <label for="file-upload2">찾기<input type="file" class="file-upload" id="file-upload2" accept=".jpg, .png, .jpeg, .heif"
-                        name="myfile2"></label><br>
+                    <label for="file-upload2">찾기<input type="file" class="file-upload" id="file-upload2"
+                        accept=".jpg, .png, .jpeg, .heif" name="myfile2"></label><br>
                     <span id="filename3">아래 사진</span>
-                    <label for="file-upload3">찾기<input type="file" class="file-upload" id="file-upload3" accept=".jpg, .png, .jpeg, .heif"
-                        name="myfile3"></label><br>
+                    <label for="file-upload3">찾기<input type="file" class="file-upload" id="file-upload3"
+                        accept=".jpg, .png, .jpeg, .heif" name="myfile3"></label><br>
                     <span id="filename4">우측 사진</span>
-                    <label for="file-upload4">찾기<input type="file" class="file-upload" id="file-upload4" accept=".jpg, .png, .jpeg, .heif"
-                        name="myfile4"></label><br>
+                    <label for="file-upload4">찾기<input type="file" class="file-upload" id="file-upload4"
+                        accept=".jpg, .png, .jpeg, .heif" name="myfile4"></label><br>
                     <span id="filename5">좌측 사진</span>
-                    <label for="file-upload5">찾기<input type="file" class="file-upload" id="file-upload5" accept=".jpg, .png, .jpeg, .heif"
-                        name="myfile5"></label><br>
+                    <label for="file-upload5">찾기<input type="file" class="file-upload" id="file-upload5"
+                        accept=".jpg, .png, .jpeg, .heif" name="myfile5"></label><br>
                   </div>
                   <div class="form-element form-submit">
                     <button class="login" type="submit">오픈베타 신청하기</button>
@@ -519,20 +512,27 @@
 
         <ul id="nav">
           <li class="nav-link">
-            <a href="http://pf.kakao.com/_xnSxhxixj" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="kakaotalk">Kakaotalk</h1></a>
+            <a href="http://pf.kakao.com/_xnSxhxixj" target="_blank" style="text-decoration:none; color:white;"
+              rel="noopener noreferrer">
+              <h1 data-name="kakaotalk">Kakaotalk</h1>
+            </a>
           </li>
           <li class="nav-link">
             <a href="https://instagram.com/purry.ai?igshid=YmMyMTA2M2Y=" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="Instagram">Instagram</h1></a>
+              style="text-decoration:none; color:white;" rel="noopener noreferrer">
+              <h1 data-name="Instagram">Instagram</h1>
+            </a>
           </li>
           <li class="nav-link">
-            <a href="mailto:purryai@gmail.com" style="text-decoration:none; color:white;"
-                rel="noopener noreferrer"><h1 data-name="Email">Email</h1></a>
+            <a href="mailto:purryai@gmail.com" style="text-decoration:none; color:white;" rel="noopener noreferrer">
+              <h1 data-name="Email">Email</h1>
+            </a>
           </li>
           <li class="nav-link">
-            <a href="https://open.kakao.com/o/gcBoAOVe" target="_blank"
-                style="text-decoration:none; color:white;" rel="noopener noreferrer"><h1 data-name="Community">Community</h1></a>
+            <a href="https://open.kakao.com/o/gcBoAOVe" target="_blank" style="text-decoration:none; color:white;"
+              rel="noopener noreferrer">
+              <h1 data-name="Community">Community</h1>
+            </a>
           </li>
         </ul>
       </div>
@@ -540,13 +540,14 @@
   </main>
 </body>
 <script>
+  //pc navigation
   class StickyNavigation {
     constructor() {
       this.currentId = null;
       this.currentTab = null;
-      if(window.innerWidth <= 750){
-        this.tabContainerHeight=0;
-      }else{
+      if (window.innerWidth <= 750) {
+        this.tabContainerHeight = 0;
+      } else {
         this.tabContainerHeight = 70;
       };
       let self = this;
@@ -564,7 +565,7 @@
     onTabClick(event, element) {
       event.preventDefault();
       let scrollTop =
-        $(element.attr("href")).offset().top - this.tabContainerHeight+1;
+        $(element.attr("href")).offset().top - this.tabContainerHeight + 1;
       $("html, body").animate({ scrollTop: scrollTop }, 600);
     }
 
@@ -663,9 +664,9 @@
 
     $("#probeedog").on("click", function () {
       $(".probeedog-modal").show();
-      if(window.innerHeight <= 825){
+      if (window.innerHeight <= 825) {
         $(".modal-body").css("top", "15%");
-      }else{
+      } else {
         $(".modal-body").css("top", "50%");
       };
     })
@@ -680,30 +681,30 @@
       $(".modal-body").css("top", "15%");
     })
 
-    $("#name").on("click", ()=>{
+    $("#name").on("click", () => {
       $("#name-label").click();
     })
-    $("#photo").on("click", ()=>{
+    $("#photo").on("click", () => {
       $("#email-label").click();
     })
 
-    $(".login").on("click", (e)=>{
+    $(".login").on("click", (e) => {
       e.preventDefault();
-      if(!$("#name").val()){
+      if (!$("#name").val()) {
         alert("이름을 입력해주세요!");
-      }else if(!$("#photo").val()){
+      } else if (!$("#photo").val()) {
         alert("이메일을 입력해주세요!");
-      }else if(!$("#file-upload1")[0].files[0]){
+      } else if (!$("#file-upload1")[0].files[0]) {
         alert("정면 사진을 추가해주세요!");
-      }else if(!$("#file-upload2")[0].files[0]){
+      } else if (!$("#file-upload2")[0].files[0]) {
         alert("위에서 찍은 사진을 추가해주세요!");
-      }else if(!$("#file-upload3")[0].files[0]){
+      } else if (!$("#file-upload3")[0].files[0]) {
         alert("아래에서 찍은 사진을 추가해주세요!");
-      }else if(!$("#file-upload4")[0].files[0]){
+      } else if (!$("#file-upload4")[0].files[0]) {
         alert("우측 에서 찍은 사진을 추가해주세요!");
-      }else if(!$("#file-upload5")[0].files[0]){
+      } else if (!$("#file-upload5")[0].files[0]) {
         alert("좌측에서 찍은 사진을 추가해주세요!");
-      }else{
+      } else {
         $("form").submit();
       }
     });
@@ -767,6 +768,7 @@
   })();
 </script>
 <script>
+  // pc home 페이지 갤러리 기능
   var swiperBottomScrollbarFull = new Swiper('.swiper-bottom-scrollbar-full', {
     allowTouchMove: true,
     slidesPerView: 'auto',
@@ -824,10 +826,10 @@
   // 모달창 슬라이더
   var sickPrimary = {
     autoplay: true,
-    autoplaySpeed: 2400,
+    autoplaySpeed: 1500,
     slidesToShow: 2,
     slidesToScroll: 1,
-    speed: 1800,
+    speed: 1500,
     cssEase: 'cubic-bezier(.84, 0, .08, .99)',
     asNavFor: '.text-slider',
     centerMode: true,
@@ -837,10 +839,10 @@
 
   var sickSecondary = {
     autoplay: true,
-    autoplaySpeed: 2400,
+    autoplaySpeed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    speed: 1800,
+    speed: 1500,
     cssEase: 'cubic-bezier(.84, 0, .08, .99)',
     asNavFor: '.image-slider',
     prevArrow: $('.prev'),
@@ -853,7 +855,7 @@
 </script>
 <script>
   /* ====================== *
-   *  Initiate Canvas       *
+   *  신청자 접수 페이지 그림  *
    * ====================== */
   paper.install(window);
   paper.setup(document.getElementById("canvas"));
@@ -1026,7 +1028,7 @@
       $('#filename5').text(filename);
     });
 
-  
+
   });
 </script>
 <script>
@@ -1057,7 +1059,7 @@ Spanizer
   })(jQuery);
 </script>
 <script>
-  // home-mobile
+  // home-mobile 3d로 돌아감
   // Author: Hoang Tran (https://fb.com/99.hoangtran)
 
   // Github verson (1 file .html): https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
@@ -1071,14 +1073,6 @@ Spanizer
   var rotateSpeed = -60; // unit: seconds/360 degrees
   var imgWidth = 120; // width of images (unit: px)
   var imgHeight = 170; // height of images (unit: px)
-
-  /*
-       NOTE:
-         + imgWidth, imgHeight will work for video
-         + if imgWidth, imgHeight too small, play/pause button in <video> will be hidden
-         + Music link are taken from: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HauMaster&playlist=1&song=1&background=28
-         + Custom from code in tiktok video  https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
-  */
 
 
   // ===================== start =======================
@@ -1177,8 +1171,6 @@ Spanizer
     radius += d;
     init(1);
   };
-
-
 </script>
 
 </html>

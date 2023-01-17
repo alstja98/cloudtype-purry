@@ -16,10 +16,17 @@
   display: none;
 }
 
+@font-face {
+  font-family: 'Hahmlet-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #fancy-button {
   color: white;
-  font-size: 13px;
-  font-family: auto;
+  font-size: 14px;
+  font-family: 'Hahmlet-Regular';
   text-transform: uppercase;
   letter-spacing: .25em;
   border-top: 1px solid #fcd4a4;
@@ -101,6 +108,13 @@ a {
   opacity: 0.8;
 }
 
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .et-hero-tabs-container {
   display: flex;
   flex-direction: row;
@@ -111,6 +125,7 @@ a {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background: #fff;
   z-index: 999;
+  font-family: 'RIDIBatang';
 }
 
 .et-hero-tabs-container--top {

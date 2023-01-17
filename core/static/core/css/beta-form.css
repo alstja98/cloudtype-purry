@@ -7,7 +7,7 @@
   width: 100% !important;
   text-align: left;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'RIDIBatang';
 }
 
 #tab-es6 {
@@ -63,8 +63,9 @@
 }
 
 .form-container label {
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .form-container input {
@@ -125,6 +126,7 @@
 
 .right .content h2 {
   color: #673AB7;
+  font-family: 'sans-serif';
 }
 
 .form-element {
@@ -155,7 +157,6 @@
   padding: 0.8em 1.2em;
   margin: 0 10px 0 0;
   width: auto;
-  font-weight: 600;
   text-transform: uppercase;
   font-size: 1em;
   color: #fff;
@@ -260,6 +261,7 @@ button:active.off.login {
   white-space: nowrap;
   overflow: hidden;
   background: #804399;
+  letter-spacing: 0.06em;
 }
 
 /* 반려동물 이미지 업로드 */

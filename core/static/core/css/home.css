@@ -97,7 +97,7 @@
     padding: 5%;
   }
   .mast__title {
-    font-family: "Cutive Mono", monospace;
+    font-family: "Chosunilbo_myungjo", monospace;
     font-size: 1em;
     font-weight: 400;
     letter-spacing: 0.2em;
@@ -185,6 +185,7 @@
     font-family: "Cutive Mono", monospace;
     font-size: 1em;
     margin: 0 0 0.5em;
+    letter-spacing: 0.1em;
     line-height: 1.5;
     white-space: pre-line;
     text-align: left;
@@ -821,7 +822,16 @@ select::-ms-expand {
     border: 0;
 }
 
+
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .top-index p {
+    font-family: 'Chosunilbo_myungjo';
     margin: 0 0 25px;
 }
 
