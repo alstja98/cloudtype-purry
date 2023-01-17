@@ -15,20 +15,30 @@ def index(request):
 # 신청자 정보 받으면 sql에 저장, 이미지 aws에 저장
 @csrf_exempt #이거는 장고 csrf 보안 해제 때문에 필요한거임. 나중에 배포할때는 지워야함.
 def openbeta(request):
-    applicant_name = request.POST['name']
-    applicant_email = request.POST['email']
-    files = request.FILES.getlist('myfiles')
+    user_name = request.POST['name']
+    user_email = request.POST['email']
+    myfile1 = request.FILES.get('myfile1')
+    myfile2 = request.FILES.get('myfile2')
+    myfile3 = request.FILES.get('myfile3')
+    myfile4 = request.FILES.get('myfile4')
+    myfile5 = request.FILES.get('myfile5')
 
+    user = User.objects.create(name=user_name, email=user_email)
+    Images.objects.create(user_id=user, path=myfile1)
+    Images.objects.create(user_id=user, path=myfile2)
+    Images.objects.create(user_id=user, path=myfile3)
+    Images.objects.create(user_id=user, path=myfile4)
+    Images.objects.create(user_id=user, path=myfile5)
 
-    for file in files:
-        # input에서 받아온 이름과 이메일을 가진 사용자가 이미 User 테이블에 있는지 확인
-        user, created = User.objects.get_or_create(name=applicant_name, email=applicant_email)
+    # for file in files:
+    #     # input에서 받아온 이름과 이메일을 가진 사용자가 이미 User 테이블에 있는지 확인
+    #     user, created = User.objects.get_or_create(name=applicant_name, email=applicant_email)
 
-        # S3에 이미지 저장하고, 저장된 이미지의 url을 가져옴
-        filename = default_storage.save(file.name, file)
-        file_url = default_storage.url(filename)
+    #     # S3에 이미지 저장하고, 저장된 이미지의 url을 가져옴
+    #     filename = default_storage.save(file.name, file)
+    #     file_url = default_storage.url(filename)
 
-        # input에서 받아온 이미지 이름들을 images 테이블에 저장
-        Images.objects.create(seq=user, path=file_url)
+    #     # input에서 받아온 이미지 이름들을 images 테이블에 저장
+    #     Images.objects.create(seq=user, path=file_url)
 
     return redirect('/app1')
