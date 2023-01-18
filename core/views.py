@@ -6,11 +6,8 @@ from django.conf import settings
 from .models import User, Images, Prompt; #db 테이블들 가져옴
 import random
 
-
-
 def index(request):
 	return render(request, 'index.html')
-
 
 # 신청자 정보 받으면 sql에 저장, 이미지 aws에 저장
 @csrf_exempt
@@ -18,7 +15,7 @@ def openbeta(request):
     user_name = request.POST['name']
     user_email = request.POST['email']
     user = User.objects.create(name=user_name, email=user_email)
-    prompt_id = Prompt.objects.get(pk=1)  # Assume the prompt with id 1 exists in the database
+    prompt_id = Prompt.objects.get(pk=1).id  # Assume the prompt with id 1 exists in the database
     image_type = ['front', 'up', 'down', 'right', 'left']  # array of image types
     index = 0  # to keep track of the current image type
 
