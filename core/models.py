@@ -6,7 +6,7 @@ class Images(models.Model):
     update_time = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
     type = models.CharField(max_length=255, blank=True, null=True)
-    prompt_id= models.ForeignKey('Prompt', models.DO_NOTHING, blank=True, null=True)
+    prompt= models.ForeignKey('Prompt', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
