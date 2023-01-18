@@ -1,2 +1,3 @@
 User-agent: *
 Allow:/
+Sitemap: https://www.purry.co.kr/sitemap.xml
