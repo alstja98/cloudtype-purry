@@ -216,7 +216,8 @@
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
                           <img src="{% static 'core/check_jacket.png' %}" alt="" />
-                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">Tweed Jacket</p>
+                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">Tweed
+                            Jacket</p>
                         </div>
                         <div class="hover-title-box padding-55px-lr width-300px sm-width-100 sm-padding-20px-lr">
                           <div class="separator width-50px bg-black md-display-none xs-margin-lr-auto"></div>
@@ -233,7 +234,8 @@
                       <div class="display-table-cell vertical-align-middle">
                         <div class="display-block position-relative">
                           <img src="{% static 'core/Animation.png' %}" alt="" />
-                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">Animate your honey</p>
+                          <p class="bottom-text width-100 text-extra-small text-white text-uppercase text-center">
+                            Animate your honey</p>
                         </div>
                         <div class="hover-title-box padding-55px-lr width-300px sm-width-100 sm-padding-20px-lr">
                           <div class="separator width-50px bg-black md-display-none xs-margin-lr-auto"></div>
@@ -770,6 +772,19 @@
   })();
 </script>
 <script>
+  // function checkEnd() {
+  //   if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
+  //     swiperBottomScrollbarFull.detachEvents();
+  //     window.addEventListener('mousewheel', function (event) {
+  //       if (event.deltaY > 0) {
+  //         window.scrollBy(0, 50);
+  //       } else {
+  //         window.scrollBy(0, -50);
+  //       }
+  //     });
+  //   }
+  // }
+
   // pc home 페이지 갤러리 기능
   var swiperBottomScrollbarFull = new Swiper('.swiper-bottom-scrollbar-full', {
     allowTouchMove: true,
@@ -809,20 +824,66 @@
         slidesOffsetAfter: 85
       }
     },
-    on: {
-      resize: function () {
-        var windowWidth = $(window).width();
-        if (windowWidth <= 767) {
-          swiperBottomScrollbarFull.direction('vertical');
-          swiperBottomScrollbarFull.detachEvents();
-        } else {
-          swiperBottomScrollbarFull.direction('horizontal');
-          swiperBottomScrollbarFull.attachEvents();
-        }
-        swiperBottomScrollbarFull.update();
-      }
+    // on: {
+    //   resize: function () {
+    //     var windowWidth = $(window).width();
+    //     if (windowWidth <= 767) {
+    //       swiperBottomScrollbarFull.direction('vertical');
+    //       swiperBottomScrollbarFull.detachEvents();
+    //     } else {
+    //       swiperBottomScrollbarFull.direction('horizontal');
+    //       swiperBottomScrollbarFull.attachEvents();
+    //     }
+    //     swiperBottomScrollbarFull.update();
+    //     swiperBottomScrollbarFull.on('slideChange', function () {
+    //       if (swiperBottomScrollbarFull.isEnd) {
+    //         swiperBottomScrollbarFull.detachEvents();
+    //         window.addEventListener('mousewheel', function (event) {
+    //           if (event.deltaY > 0) {
+    //             window.scrollBy(0, 50);
+    //           } else {
+    //             window.scrollBy(0, -50);
+    //           }
+    //         });
+    //       } else {
+    //         swiperBottomScrollbarFull.attachEvents();
+    //         window.removeEventListener('mousewheel', function (event) { });
+    //       }
+    //     });
+    //   }
+    // }
+  });
+
+  window.addEventListener('mousewheel', function (event) {
+    if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1 && event.deltaY > 0) {
+      window.scrollBy(0, 50);
     }
   });
+  swiperBottomScrollbarFull.on('slideChange', function () {
+    if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
+      swiperBottomScrollbarFull.detachEvents();
+    } else {
+      swiperBottomScrollbarFull.attachEvents();
+    }
+  });
+
+
+  // swiperBottomScrollbarFull.on('slideChange', function () {
+  //   if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
+  //     swiperBottomScrollbarFull.detachEvents();
+  //     window.addEventListener('mousewheel', function (event) {
+  //       if (event.deltaY > 0) {
+  //         window.scrollBy(0, 50);
+  //       } else {
+  //         window.scrollBy(0, -50);
+  //       }
+  //     });
+  //   } else {
+  //     swiperBottomScrollbarFull.attachEvents();
+  //     window.removeEventListener('mousewheel', function (event) { });
+  //   }
+  // });
+
 </script>
 <script>
   // 모달창 슬라이더
@@ -1128,51 +1189,6 @@ Spanizer
     ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
   }
 
-  // // setup events
-  // document.onpointerdown = function (e) {
-  //   clearInterval(odrag.timer);
-  //   e = e || window.event;
-  //   var sX = e.clientX,
-  //     sY = e.clientY;
-
-  //   this.onpointermove = function (e) {
-  //     e = e || window.event;
-  //     var nX = e.clientX,
-  //       nY = e.clientY;
-  //     desX = nX - sX;
-  //     desY = nY - sY;
-  //     tX += desX * 0.1;
-  //     tY += desY * 0.1;
-  //     applyTranform(odrag);
-  //     sX = nX;
-  //     sY = nY;
-  //   };
-
-  //   this.onpointerup = function (e) {
-  //     odrag.timer = setInterval(function () {
-  //       desX *= 0.95;
-  //       desY *= 0.95;
-  //       tX += desX * 0.1;
-  //       tY += desY * 0.1;
-  //       applyTranform(odrag);
-  //       playSpin(false);
-  //       if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-  //         clearInterval(odrag.timer);
-  //         playSpin(true);
-  //       }
-  //     }, 17);
-  //     this.onpointermove = this.onpointerup = null;
-  //   };
-
-  //   return false;
-  // };
-
-  // document.onmousewheel = function (e) {
-  //   e = e || window.event;
-  //   var d = e.wheelDelta / 20 || -e.detail;
-  //   radius += d;
-  //   init(1);
-  // };
 </script>
 
 </html>
