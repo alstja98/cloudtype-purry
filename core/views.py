@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
 from .models import User, Images, Prompt; #db 테이블들 가져옴
+from datetime import datetime
 import random
 
 def index(request):
@@ -22,9 +23,14 @@ def openbeta(request):
     for i in range(1, 6):
         myfile = request.FILES.get(f'myfile{i}')
         if myfile:
-            filename = default_storage.save(myfile.name, myfile)
+            extension = myfile.name.split(".")[-1]
+            date = datetime.now().strftime("%Y%m%d")
+            time = datetime.now().strftime("%H:%M:%S")
+            filename = user_name + str(i) + "_" + date + "_" + time + "." + extension
+            filename = default_storage.save(filename, myfile)
             file_url = default_storage.url(filename)
             if index < len(image_type):
                 Images.objects.create(user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
                 index += 1
+
     return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
