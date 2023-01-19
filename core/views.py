@@ -27,4 +27,4 @@ def openbeta(request):
             if index < len(image_type):
                 Images.objects.create(user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
                 index += 1
-    return redirect('/app1')
+    return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
