@@ -3,7 +3,7 @@ from django.db import models
 
 class Images(models.Model):
     path = models.CharField(max_length=1000)
-    update_time = models.DateTimeField(blank=True, null=True)
+    update_time = models.DateTimeField(auto_now=True)
     user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
     type = models.CharField(max_length=255, blank=True, null=True)
     prompt= models.ForeignKey('Prompt', models.DO_NOTHING, blank=True, null=True)
@@ -24,7 +24,7 @@ class Prompt(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=500)
-    update_time = models.DateTimeField(blank=True, null=True)
+    update_time = models.DateTimeField(auto_now=True)
 
     class Meta:
         managed = False
