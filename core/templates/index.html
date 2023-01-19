@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.3/paper-full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
   <!--모바일내비-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineMax.min.js"></script>
@@ -772,21 +773,9 @@
   })();
 </script>
 <script>
-  // function checkEnd() {
-  //   if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
-  //     swiperBottomScrollbarFull.detachEvents();
-  //     window.addEventListener('mousewheel', function (event) {
-  //       if (event.deltaY > 0) {
-  //         window.scrollBy(0, 50);
-  //       } else {
-  //         window.scrollBy(0, -50);
-  //       }
-  //     });
-  //   }
-  // }
-
   // pc home 페이지 갤러리 기능
   var swiperBottomScrollbarFull = new Swiper('.swiper-bottom-scrollbar-full', {
+    // touchMoveStopPropagation: false,
     allowTouchMove: true,
     slidesPerView: 'auto',
     grabCursor: true,
@@ -803,9 +792,9 @@
       hide: false,
       snapOnRelease: true
     },
-    mousewheel: {
-      enable: true
-    },
+    // mousewheel: {
+    //   enable: true
+    // },
     keyboard: {
       enabled: true
     },
@@ -824,65 +813,9 @@
         slidesOffsetAfter: 85
       }
     },
-    // on: {
-    //   resize: function () {
-    //     var windowWidth = $(window).width();
-    //     if (windowWidth <= 767) {
-    //       swiperBottomScrollbarFull.direction('vertical');
-    //       swiperBottomScrollbarFull.detachEvents();
-    //     } else {
-    //       swiperBottomScrollbarFull.direction('horizontal');
-    //       swiperBottomScrollbarFull.attachEvents();
-    //     }
-    //     swiperBottomScrollbarFull.update();
-    //     swiperBottomScrollbarFull.on('slideChange', function () {
-    //       if (swiperBottomScrollbarFull.isEnd) {
-    //         swiperBottomScrollbarFull.detachEvents();
-    //         window.addEventListener('mousewheel', function (event) {
-    //           if (event.deltaY > 0) {
-    //             window.scrollBy(0, 50);
-    //           } else {
-    //             window.scrollBy(0, -50);
-    //           }
-    //         });
-    //       } else {
-    //         swiperBottomScrollbarFull.attachEvents();
-    //         window.removeEventListener('mousewheel', function (event) { });
-    //       }
-    //     });
-    //   }
-    // }
+
   });
 
-  window.addEventListener('mousewheel', function (event) {
-    if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1 && event.deltaY > 0) {
-      window.scrollBy(0, 50);
-    }
-  });
-  swiperBottomScrollbarFull.on('slideChange', function () {
-    if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
-      swiperBottomScrollbarFull.detachEvents();
-    } else {
-      swiperBottomScrollbarFull.attachEvents();
-    }
-  });
-
-
-  // swiperBottomScrollbarFull.on('slideChange', function () {
-  //   if (swiperBottomScrollbarFull.activeIndex === swiperBottomScrollbarFull.slides.length - 1) {
-  //     swiperBottomScrollbarFull.detachEvents();
-  //     window.addEventListener('mousewheel', function (event) {
-  //       if (event.deltaY > 0) {
-  //         window.scrollBy(0, 50);
-  //       } else {
-  //         window.scrollBy(0, -50);
-  //       }
-  //     });
-  //   } else {
-  //     swiperBottomScrollbarFull.attachEvents();
-  //     window.removeEventListener('mousewheel', function (event) { });
-  //   }
-  // });
 
 </script>
 <script>
