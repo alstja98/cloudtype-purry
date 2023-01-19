@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <body>
+      <table border="1">
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>User Email</th>
+          <th>Image ID</th>
+          <th>Image URL</th>
+          <th>Image</th>
+        </tr>
+        <font color="black">
+          {% for row in rows %}
+          <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.type }}</td>
+            <td>{{ row.path }}</td>
+            <td><img src="{{row.path}}" height="128" width="128"</td>
+          </tr>
+          {% endfor %}
+        </font>
+      </table>
+    </body>
+  </head>
+</html>

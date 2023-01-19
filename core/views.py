@@ -1,10 +1,13 @@
-from django.shortcuts import render, HttpResponse
+from http.client import HTTPResponse
+from django.db import connection
+from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import redirect
 from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
+from django.http import FileResponse, HttpResponseBadRequest
 from .models import User, Images, Prompt; #db 테이블들 가져옴
 from datetime import datetime
+import boto3
 import random
 
 def index(request):
@@ -34,3 +37,48 @@ def openbeta(request):
                 index += 1
 
     return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
+
+def manage(request):
+    id = request.GET.get('id')
+    password = request.GET.get('password')
+    if id!='furrywithprobee123@gmail.com' and password!='probee123!':
+        return HttpResponseBadRequest
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+        rows = cursor.fetchall()
+        response = []
+        s3 = boto3.client('s3')
+        for row in rows:
+            path = row[4].split('?')[0]
+            response.append({'id':row[0], 'name':row[1], 'email':row[2], 'type':row[3], 'path':path})
+    return render(request, 'manage.html', {'rows': response})
+
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+
+    elif request.method == "POST":
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+
+        res_data ={}
+        if not (username and password):
+            res_data['error'] = '모든 값을 입력하세요!'
+
+        else:
+            if username=='probee' and password=='probee123!':
+                pass
+            else:
+                res_data['error'] = '비밀번호가 다릅니다!'
+
+        return render(request, 'login.html', res_data)
+    
+def download_image(request):
+    path = request.GET.get('path')
+    # Connect to S3 using the boto3 library
+    s3 = boto3.client('s3')
+
+    # Download the image
+    response = s3.get_object(Bucket='purry0', Key=path)
+    # Return the image as a FileResponse so that it can be downloaded
+    return FileResponse(response['Body'], as_attachment=True, filename='image.jpg')

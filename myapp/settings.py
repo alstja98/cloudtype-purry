@@ -27,7 +27,7 @@ def get_env_variable(var_name):
     error_msg = 'Set the {} environment variable'.format(var_name)
     raise ImproperlyConfigured(error_msg)
 
-SECRET_KEY = get_env_variable('DJANGO_SECRET')
+SECRET_KEY = "django-insecure-i9t#3$(+*5gcxlsegq*q8smgk6d)idt5dst=0zq7_qo4vz8^v%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'purry',
         'USER': 'admin',
-        'PASSWORD': SECRET_KEY,
+        'PASSWORD': "probee123!",
         'HOST': 'purry-db-0.cbevwkitof5m.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }
@@ -141,9 +141,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # AWS S3 설정
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = "AKIATWMPGJ6JM6KFN4EU"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "purry0"
 AWS_S3_REGION_NAME = 'ap-northeast-2'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 
