@@ -99,17 +99,17 @@ def download_image(request):
 
 @csrf_exempt
 def login(request):
-
-    if request.method == "POST":
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
         username = request.POST.get('id', None)
         password = request.POST.get('pw', None)
-        user = Admin.objects.filter(id=username, pw=password).first()
-        if user:
+        session_username = request.session.get('username', None)
+        session_password = request.session.get('password', None)
+        if username == session_username and password == session_password:
             with connection.cursor() as cursor:
                 cursor.execute(
                     "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
-                # cursor.execute(
-                #     "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id and i.type in ('front','up','down','right','left') group by u.id")
                 rows = cursor.fetchall()
                 response = []
                 s3 = boto3.client('s3')
@@ -119,8 +119,22 @@ def login(request):
                         {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
             return render(request, 'manage.html', {'rows': response})
         else:
-            res_data = {'error': '로그인 정보가 틀렸습니다.'}
-            return render(request, 'login.html', {'res_data': res_data})
-
-
+            user = Admin.objects.filter(id=username, pw=password).first()
+            if user:
+                request.session['username'] = username
+                request.session['password'] = password
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+                    rows = cursor.fetchall()
+                    response = []
+                    s3 = boto3.client('s3')
+                    for row in rows:
+                        path = row[4].split('?')[0]
+                        response.append(
+                            {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
+                return render(request, 'manage.html', {'rows': response})
+            else:
+                res_data = {'error': '로그인 정보가 틀렸습니다.'}
+                return render(request, 'login.html', res_data)
     return render(request, 'login.html')

@@ -31,12 +31,5 @@
         </form>
       </div>
 </body>
-<script>
-    $(".login_button").on("click", () => {
-        var res_data = "{{ res_data|safe }}";
-        if(res_data.error){
-            alert(res_data.error);
-        }
-    })
-</script>
+
 </html>
