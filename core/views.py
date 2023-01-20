@@ -2,25 +2,30 @@ from http.client import HTTPResponse
 from django.db import connection
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.core.files.storage import default_storage #aws에 이미지 저장하기 위해 필요한거임
+from django.core.files.storage import default_storage  # aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
 from django.http import FileResponse, HttpResponseBadRequest
-from .models import User, Images, Prompt; #db 테이블들 가져옴
+from .models import User, Images, Prompt;  # db 테이블들 가져옴
 from datetime import datetime
 import boto3
 import random
+
 
 def index(request):
 	return render(request, 'index.html')
 
 # 신청자 정보 받으면 sql에 저장, 이미지 aws에 저장
+
+
 @csrf_exempt
 def openbeta(request):
     user_name = request.POST['name']
     user_email = request.POST['email']
     user = User.objects.create(name=user_name, email=user_email)
-    prompt_id = Prompt.objects.get(pk=1).id  # Assume the prompt with id 1 exists in the database
-    image_type = ['front', 'up', 'down', 'right', 'left']  # array of image types
+    # Assume the prompt with id 1 exists in the database
+    prompt_id = Prompt.objects.get(pk=1).id
+    image_type = ['front', 'up', 'down',
+        'right', 'left']  # array of image types
     index = 0  # to keep track of the current image type
 
     for i in range(1, 6):
@@ -29,29 +34,37 @@ def openbeta(request):
             extension = myfile.name.split(".")[-1]
             date = datetime.now().strftime("%Y%m%d")
             time = datetime.now().strftime("%H:%M:%S")
-            filename = user_name + str(i) + "_" + date + "_" + time + "." + extension
+            filename = user_name + str(i) + "_" + \
+                                       date + "_" + time + "." + extension
             filename = default_storage.save(filename, myfile)
             file_url = default_storage.url(filename)
             if index < len(image_type):
-                Images.objects.create(user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
+                Images.objects.create(
+                    user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
                 index += 1
 
     return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
 
+
 def manage(request):
     id = request.GET.get('id')
     password = request.GET.get('password')
-    if id!='furrywithprobee123@gmail.com' and password!='probee123!':
+    if id != 'furrywithprobee123@gmail.com' and password != 'probee123!':
         return HttpResponseBadRequest
     with connection.cursor() as cursor:
-        cursor.execute("SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+        cursor.execute(
+            "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+        # cursor.execute(
+        #     "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id and i.type in ('front','up','down','right','left') group by u.id")
         rows = cursor.fetchall()
         response = []
         s3 = boto3.client('s3')
         for row in rows:
             path = row[4].split('?')[0]
-            response.append({'id':row[0], 'name':row[1], 'email':row[2], 'type':row[3], 'path':path})
+            response.append(
+                {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
     return render(request, 'manage.html', {'rows': response})
+
 
 def login(request):
     if request.method == "GET":
@@ -61,18 +74,19 @@ def login(request):
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
 
-        res_data ={}
+        res_data = {}
         if not (username and password):
             res_data['error'] = '모든 값을 입력하세요!'
 
         else:
-            if username=='probee' and password=='probee123!':
+            if username == 'probee' and password == 'probee123!':
                 pass
             else:
                 res_data['error'] = '비밀번호가 다릅니다!'
 
         return render(request, 'login.html', res_data)
-    
+
+
 def download_image(request):
     path = request.GET.get('path')
     # Connect to S3 using the boto3 library
