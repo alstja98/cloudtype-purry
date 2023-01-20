@@ -35,6 +35,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/snslink.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/beta-form.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/goods.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/popup.css' %}" />
   <!-- 모바일 전용 css -->
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-nav.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'core/css/mobile-home.css' %}" />
@@ -57,6 +58,23 @@
 </head>
 
 <body>
+  <div class="popup-card">
+    <img class="popup-top" src="{% static 'core/purry_popup.png' %}"/>
+    <div class="popup-text">
+      <div class="popup-title">
+        오픈베타 신청이 마감되었습니다!<br>
+      </div>
+      <div class="popup-info">
+        purry.ai 인스타를 방문하여 결과물을 구경하세요!<br>
+        purry 운영진은 카카오톡에서도 활발하게 소통중입니다.<br><br>
+        오픈베타 피드백을 바탕으로 양질의 좋은 서비스를 제공하는
+        purry가 되어 조만간 정식으로 돌아오겠습니다.<br><br>많은 참여 감사합니다 :)
+      </div>
+    </div>
+    <div class="popup-buttons">
+      <div class="popup-button">Cancel</div>
+    </div>
+  </div>
   <main class="et-main">
     <!-- PC 내비게이션-->
     <section class="et-hero-tabs">
@@ -713,6 +731,10 @@
         $("form").submit();
       }
     });
+
+    $(".popup-buttons").on("click",()=>{
+      $(".popup-card").fadeOut(1700);
+    })
 
 
   });

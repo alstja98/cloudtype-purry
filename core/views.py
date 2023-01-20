@@ -19,31 +19,31 @@ def index(request):
 
 @csrf_exempt
 def openbeta(request):
-    user_name = request.POST['name']
-    user_email = request.POST['email']
-    user = User.objects.create(name=user_name, email=user_email)
-    # Assume the prompt with id 1 exists in the database
-    prompt_id = Prompt.objects.get(pk=1).id
-    image_type = ['front', 'up', 'down',
-        'right', 'left']  # array of image types
-    index = 0  # to keep track of the current image type
+    # user_name = request.POST['name']
+    # user_email = request.POST['email']
+    # user = User.objects.create(name=user_name, email=user_email)
+    # # Assume the prompt with id 1 exists in the database
+    # prompt_id = Prompt.objects.get(pk=1).id
+    # image_type = ['front', 'up', 'down',
+    #     'right', 'left']  # array of image types
+    # index = 0  # to keep track of the current image type
 
-    for i in range(1, 6):
-        myfile = request.FILES.get(f'myfile{i}')
-        if myfile:
-            extension = myfile.name.split(".")[-1]
-            date = datetime.now().strftime("%Y%m%d")
-            time = datetime.now().strftime("%H:%M:%S")
-            filename = user_name + str(i) + "_" + \
-                                       date + "_" + time + "." + extension
-            filename = default_storage.save(filename, myfile)
-            file_url = default_storage.url(filename)
-            if index < len(image_type):
-                Images.objects.create(
-                    user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
-                index += 1
+    # for i in range(1, 6):
+    #     myfile = request.FILES.get(f'myfile{i}')
+    #     if myfile:
+    #         extension = myfile.name.split(".")[-1]
+    #         date = datetime.now().strftime("%Y%m%d")
+    #         time = datetime.now().strftime("%H:%M:%S")
+    #         filename = user_name + str(i) + "_" + \
+    #                                    date + "_" + time + "." + extension
+    #         filename = default_storage.save(filename, myfile)
+    #         file_url = default_storage.url(filename)
+    #         if index < len(image_type):
+    #             Images.objects.create(
+    #                 user=user, path=file_url, prompt_id=prompt_id, type=image_type[index])
+    #             index += 1
 
-    return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
+    return HttpResponse("<script>alert('오픈베타 신청이 마감되었습니다. 정식 서비스를 기대해주세요!');window.location.href = '/app1'</script>")
 
 '''
 def manage(request):

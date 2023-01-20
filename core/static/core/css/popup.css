@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+.popup-card {
+  align-items: center;
+  background-color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  justify-content: center;
+  display:flex;
+}
+.popup-card {
+  border-radius: 20px;
+  box-shadow: 0 0.4px 3.6px rgba(0, 0, 0, 0.004),
+    0 1px 8.5px rgba(0, 0, 0, 0.01), 0 1.9px 15.7px rgba(0, 0, 0, 0.019),
+    0 3.4px 28.2px rgba(0, 0, 0, 0.03), 0 6.3px 54.4px rgba(0, 0, 0, 0.047),
+    0 15px 137px rgba(0, 0, 0, 0.07);
+  position: absolute;
+  flex-direction: column;
+  z-index: 9999;
+  width: 415px;
+  height: 400px;
+  top:20px;
+  left:20px;
+
+}
+.popup-top {
+  background-color: #eee;
+  width: 25%;
+}
+.popup-text {
+  padding: 0 20px 20px;
+  width: 100%;
+}
+.popup-title {
+  align-items: center;
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  position: relative;
+}
+.popup-info {
+  color: #64686b;
+  font-size:14px;
+}
+.popup-text {
+  font-size: 16px;
+  font-weight: normal;
+  transition: opacity 240ms 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup-tooltip:hover ~ .popup-text {
+  display: block;
+}
+.popup-buttons {
+  display: flex;
+  margin-top: 8px;
+  width: 100%;
+  justify-content: center;
+}
+.popup-button {
+  align-items: center;
+  background: #edf1f7;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 90%;
+}
+
+
+@media (max-width: 750px) {
+    .popup-card{
+        width:330px;
+        height:450px;
+    }
+
+    .popup-title{
+        font-size:19px;
+    }
+
+    .popup-info{
+        font-size:13px;
+    }
+}
+
+@media (max-width:300px){
+    .popup-card{
+        width:86%;
+        height:440px;
+    }
+
+    .popup-title{
+        font-size:15px;
+    }
+
+    .popup-info{
+        font-size:12px;
+    }
+}
