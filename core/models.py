@@ -1,6 +1,7 @@
 # Create your models here.
 from django.db import models
 
+
 class Images(models.Model):
     path = models.CharField(max_length=1000)
     update_time = models.DateTimeField(auto_now=True)
