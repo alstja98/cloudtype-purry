@@ -67,6 +67,8 @@ CORS_ORIGIN_WHITELIST = (
     'https://www.purry.co.kr', # 서버에서 admin 페이지 접근 위해 추가
 )
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'myapp.urls'
 
 TEMPLATES = [

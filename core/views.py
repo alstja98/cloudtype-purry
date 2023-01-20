@@ -16,7 +16,6 @@ def index(request):
 
 # 신청자 정보 받으면 sql에 저장, 이미지 aws에 저장
 
-
 @csrf_exempt
 def openbeta(request):
     user_name = request.POST['name']
