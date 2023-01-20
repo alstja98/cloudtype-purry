@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage  # aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
 from django.http import FileResponse, HttpResponseBadRequest
-from .models import User, Images, Prompt;  # db 테이블들 가져옴
+from .models import User, Images, Prompt, Admin;  # db 테이블들 가져옴
 from datetime import datetime
 import boto3
 import random
@@ -44,7 +44,7 @@ def openbeta(request):
 
     return HttpResponse("<script>alert('신청이 완료되었습니다.');window.location.href = '/app1'</script>")
 
-
+'''
 def manage(request):
     id = request.GET.get('id')
     password = request.GET.get('password')
@@ -84,7 +84,7 @@ def login(request):
                 res_data['error'] = '비밀번호가 다릅니다!'
 
         return render(request, 'login.html', res_data)
-
+'''
 
 def download_image(request):
     path = request.GET.get('path')
@@ -95,3 +95,45 @@ def download_image(request):
     response = s3.get_object(Bucket='purry0', Key=path)
     # Return the image as a FileResponse so that it can be downloaded
     return FileResponse(response['Body'], as_attachment=True, filename='image.jpg')
+
+@csrf_exempt
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        username = request.POST.get('id', None)
+        password = request.POST.get('pw', None)
+        session_username = request.session.get('username', None)
+        session_password = request.session.get('password', None)
+        if username == session_username and password == session_password:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+                rows = cursor.fetchall()
+                response = []
+                s3 = boto3.client('s3')
+                for row in rows:
+                    path = row[4].split('?')[0]
+                    response.append(
+                        {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
+            return render(request, 'manage.html', {'rows': response})
+        else:
+            user = Admin.objects.filter(id=username, pw=password).first()
+            if user:
+                request.session['username'] = username
+                request.session['password'] = password
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        "SELECT u.id, u.name, u.email, i.type, i.path FROM user u, images i WHERE u.id=i.user_id")
+                    rows = cursor.fetchall()
+                    response = []
+                    s3 = boto3.client('s3')
+                    for row in rows:
+                        path = row[4].split('?')[0]
+                        response.append(
+                            {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
+                return render(request, 'manage.html', {'rows': response})
+            else:
+                res_data = {'error': '로그인 정보가 틀렸습니다.'}
+                return render(request, 'login.html', res_data)
+    return render(request, 'login.html')
