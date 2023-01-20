@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/manage/login.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form action="/admin2/" method="post">
+          <div class="user-box">
+            <input type="text" name="id" required>
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="pw" required>
+            <label>Password</label>
+          </div>
+          <button class="login_button" type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </button>
+        </form>
+      </div>
+</body>
+<script>
+    $(".login_button").on("click", () => {
+        var res_data = "{{ res_data|safe }}";
+        if(res_data.error){
+            alert(res_data.error);
+        }
+    })
+</script>
+</html>

@@ -30,3 +30,13 @@ class User(models.Model):
     class Meta:
         managed = False
         db_table = 'user'
+
+        
+class Admin(models.Model):
+    code = models.AutoField(primary_key=True)
+    id = models.CharField(max_length=500, blank=True, null=True)
+    pw = models.CharField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'admin'
