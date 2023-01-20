@@ -2,7 +2,6 @@ from http.client import HTTPResponse
 from django.db import connection
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.views import views
 from django.core.files.storage import default_storage  # aws에 이미지 저장하기 위해 필요한거임
 from django.conf import settings
 from django.http import FileResponse, HttpResponseBadRequest, HttpResponse, JsonResponse
