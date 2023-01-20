@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'corsheaders', # 서버에서 admin 페이지 접근 위해 추가
+    'corsheaders', # 서버에서 admin 페이지 접근 위해 추가/ pip install django-cors-headers
     'core',
 ]
 SITE_ID = 1
