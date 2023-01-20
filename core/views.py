@@ -98,6 +98,7 @@ def download_image(request):
 
 @csrf_exempt
 def login(request):
+
     if request.method == "GET":
         return render(request, 'login.html')
     elif request.method == "POST":
@@ -118,7 +119,12 @@ def login(request):
                         {'id': row[0], 'name': row[1], 'email': row[2], 'type': row[3], 'path': path})
             return render(request, 'manage.html', {'rows': response})
         else:
-            user = Admin.objects.filter(id=username, pw=password).first()
+            if Admin.objects.filter(id=username).exists() :
+                decode_hash_pw = Admin.objects.get(id=username).pw
+                bytes_input_pw = password.encode('utf-8')
+                bytes_db_pw = decode_hash_pw.encode('utf-8')
+                user = bcrypt.checkpw(bytes_input_pw, bytes_db_pw)
+            #user = Admin.objects.filter(id=username, pw=password).first()
             if user:
                 request.session['username'] = username
                 request.session['password'] = password
